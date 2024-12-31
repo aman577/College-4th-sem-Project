@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Nirmala's Parlor</title>
+    <!-- <link rel="stylesheet" href="hello.css"> -->
+
+    <!-- Fonts for styling -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+
+header {
+    /* border: 1px solid green; */
+    display: flex;
+    padding-top: 5px;
+    justify-content: center;
+    background-color: #828385;
+    padding-bottom: 5px;
+    border-radius: 20px;
+
+}
+
+nav {
+
+    /* border: 1px solid rgb(12, 103, 240); */
+    display: grid;
+    list-style-type: none;
+    grid-template-columns: repeat(5, auto);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: auto;
+}
+
+nav li {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+nav li a {
+    /* border: 1px solid rgb(255, 255, 255); */
+    transition: 0.7s;
+    text-decoration: none;
+    color: rgb(245, 220, 220);
+    padding: 10px 10px;
+    border-radius: 20px;
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+li a:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(168, 152, 132);
+}
+.login {
+    position: relative;
+    right: 100px;
+    top: 15px;
+    /* border: 1px solid green; */
+    list-style-type: none;
+    
+    
+}
+.login a{
+    color:rgb(45, 52, 148);
+    /* background-color: rgb(58, 106, 148); */
+    background-color: transparent;
+    
+}
+.login li a {
+    /* border: 1px solid rgb(255, 255, 255); */
+    transition: 0.7s;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 15px 20px;
+    border-radius: 25px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+        /* General Contact Page Styling */
+
+.contact-us-page {
+    font-family: 'Jost', sans-serif;
+    margin: 20px;
+}
+
+.contact-section h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.contact-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Contact Form Styling */
+.contact-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.contact-form label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 97%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.contact-form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Contact Info Section */
+.contact-info {
+    margin-top: 40px;
+}
+
+.contact-info h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    font-size: 16px;
+    color: #555;
+}
+
+.map-container iframe {
+    border: 0;
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+}
+
+/* Working Hours Section */
+.working-hours {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.working-hours h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.working-hours p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .footerp{
+    font-size: 14px;
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Header section -->
+    <header>
+        <nav class="nav" id="nav">
+            <li><a href="hello.htm">HOME</a></li>
+            <li><a href="menu.htm">MENU</a></li>
+            <li><a href="Services.htm">OUR SERVICES</a></li>
+            <li><a href="about.htm">ABOUT US</a></li>
+            <li><a href="#active">CONTACT US</a></li>
+        </nav>
+        <div class="login">
+            <li><a href="./login.php">LOGIN/REGISTER</a></li>
+        </div>
+    </header>
+
+    <!-- Contact Us Section -->
+    <div class="contact-us-page">
+        <div class="contact-section">
+            <h1>Get in Touch</h1>
+            <p class="contact-description">
+                We would love to hear from you! Whether you have questions, feedback, or you’re ready to book your appointment,
+                you can get in touch with us using the form below or through our contact information.
+            </p>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" required placeholder="Write your message"></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Info Section -->
+            <div class="contact-info">
+                <h2>Our Location</h2>
+                <p><b>Address:</b> New Baneshwor, Eyeplex Ko Gully</p>
+                <p><b>Phone:</b> 9800000000</p>
+                <p><b>Email:</b> Nirmala@gmail.com</p>
+
+                <!-- Embed a Google Map for location -->
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2822.767338566151!2d85.32490961626382!3d27.66910942629779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a7c0f4e87%3A0x8ef93d5c41f6b2f6!2sEyeplex%20Ko%20Gully%2C%20New%20Baneshwor!5e0!3m2!1sen!2snp!4v1679711239467!5m2!1sen!2snp" 
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Working Hours Section -->
+        <div class="working-hours">
+            <h2>Our Working Hours</h2>
+            <p><b>Mon-Wed:</b> 10:00 AM - 9:00 PM</p>
+            <p><b>Thursday:</b> 10:00 AM - 7:30 PM</p>
+            <p><b>Friday:</b> 10:00 AM - 9:00 PM</p>
+            <p><b>Sat-Sun:</b> 10:00 AM - 5:00 PM</p>
+        </div>
+    </div>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="footerp">
+            <p>&copy; Nirmala's Parlor. All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+
+</html>

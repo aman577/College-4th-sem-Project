@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services</title>
+  <link rel="stylesheet" href="services.css">
+</head>
+<body>
+    <div class="main_photo">
+        <header>
+            <nav class="nav" id="nav">
+                <li><a href="hello.htm">HOME</a></li>
+                <li><a href="menu.htm">MENU</a></li>
+                <li><a href="#active">OUR SERVICES</a></li>
+                <li><a href="about.htm">ABOUT US</a></li>
+                <li><a href="contact.htm">CONTACT US</a></li>
+            </nav>
+        </header>
+    <h1>Welcome to Our Beauty Parlour</h1>
+    <p>Explore our services and meet our expert staff!</p>
+ 
+
+  <main>
+    <!-- Services Section -->
+    <section class="services-section">
+      <h2>Our Services</h2>
+      <div class="services-menu">
+        <!-- 6 Categories of Services -->
+        <div class="categories">
+          <div class="category" data-category="hair-care">
+            <img src="images/haircare.jpg" alt="Hair Care">
+            <h3>Hair Care</h3>
+          </div>
+          <div class="category" data-category="facial-care">
+            <img src="images/facialcare.jpg" alt="Facial Care">
+            <h3>Facial Care</h3>
+          </div>
+          <div class="category" data-category="nail-care">
+            <img src="images/nailcare.jpg" alt="Nail Care">
+            <h3>Nail Care</h3>
+          </div>
+          <div class="category" data-category="skin-care">
+            <img src="images/skincare.jpg" alt="Skin Care">
+            <h3>Skin Care</h3>
+          </div>
+          <div class="category" data-category="massage">
+            <img src="images/massage.jpg" alt="Massage">
+            <h3>Massage</h3>
+          </div>
+          <div class="category" data-category="bridal-services">
+            <img src="images/bridal.jpg" alt="Bridal Services">
+            <h3>Bridal Services</h3>
+          </div>
+        </div>
+        <!-- Sub-services and details section -->
+        <div class="sub-services-section">
+          <h3>Sub-Services</h3>
+          <ul id="sub-service-list">
+            <!-- Sub-services will be dynamically populated here -->
+          </ul>
+        </div>
+        <div class="service-details">
+          <h3>Service Details</h3>
+          <div class="details-content">
+            <div class="details-text">
+              <p id="service-name">Choose a category to view details</p>
+              <p id="service-description"></p>
+              <p id="service-price"></p>
+              <button id="book-button" onclick="bookAppointment()">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Parlour Staff Section -->
+    <section class="staff-section">
+      <h2>Meet Our Experts</h2>
+      <div class="staff">
+        <div class="staff-member">
+          <img src="images/staff1.jpg" alt="Staff 1">
+          <h3>John Doe</h3>
+          <p>Expert in Haircuts and Hair Styling</p>
+        </div>
+        <div class="staff-member">
+          <img src="images/staff2.jpg" alt="Staff 2">
+          <h3>Jane Smith</h3>
+          <p>Expert in Facial Care and Skin Treatments</p>
+        </div>
+        <div class="staff-member">
+          <img src="images/staff3.jpg" alt="Staff 3">
+          <h3>Emily Davis</h3>
+          <p>Expert in Nail Care and Waxing</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="services.js"></script>
+</body>
+</html>

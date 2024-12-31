@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    /* border: 1px solid green; */
+    display: flex;
+    padding-top: 30px;
+    justify-content: center;
+}
+
+nav {
+
+    /* border: 1px solid rgb(12, 103, 240); */
+    display: grid;
+    list-style-type: none;
+    grid-template-columns: repeat(5, auto);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: auto;
+}
+
+nav li {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+nav li a {
+    /* border: 1px solid rgb(255, 255, 255); */
+    transition: 0.7s;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 10px 10px;
+    border-radius: 20px;
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+li a:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgb(168, 152, 132);
+}
+.login {
+    position: relative;
+    right: 100px;
+    top: 10px;
+    /* border: 1px solid green; */
+    color: rgb(205, 123, 30);
+    list-style-type: none;
+    
+    
+}
+.login a{
+    color:rgb(45, 52, 148);
+    /* background-color: rgb(58, 106, 148); */
+    background-color: transparent;
+    border: 1px solid white;
+    
+}
+.login li a {
+    /* border: 1px solid rgb(255, 255, 255); */
+    transition: 0.7s;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 15px 20px;
+    border-radius: 25px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+
+.main_photo {
+    /* border: 2px solid red; */
+    background-image: url(./1stimg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 700px;
+}
+
+.main_photo .text1,
+.text2 {
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 5rem;
+    font-family: "Vollkorn", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.main_photo .text {
+    /* border: 1px solid rgb(255, 255, 255); */
+    position: relative;
+    top: 120px;
+}
+#price-tooltip {
+    display: none;
+    position: absolute;
+    background-color: #ff6f61;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  
+  /* Other styles remain the same */
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  main {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 80px;
+    position: relative;
+    overflow: visible;
+  }
+  
+  .services-menu {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 7rem;
+    width: 80%;
+    margin: auto;
+    position: relative;
+    overflow: visible;
+  }
+  
+  .service {
+    height: 150px;
+    background-color: #fff;
+    border: 2px solid #ff6f61;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    position: relative; /* Ensure submenu is positioned relative to this */
+    transition: transform 0.3s;
+    overflow: visible; 
+    z-index: 1;
+    /* Prevent clipping of the submenu */
+  }
+  
+  .service img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .service:hover {
+    transform: scale(1.05);
+  }
+  
+  .service h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #ff6f61;
+  }
+  
+  .submenu {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    position: absolute; /* Place submenu outside of the normal flow */
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(102, 89, 89, 0.1);
+    /* display: none;  */
+    top: 100%; /* Position submenu below the service */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px;
+     /* z-index: 100; */
+  }
+  
+  
+  .submenu li {
+    border: 1 px solid blueviolet;
+    width: 200px;
+    background-color: antiquewhite;
+    padding: 5px 10px;
+    text-align: left;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .submenu li:hover {
+    background-color: #ffe0dd;
+  }
+  .service:hover .submenu {
+    display: block; /* Show submenu on hover */
+  }
+  footer {
+    display: flex;
+    background-color: black;
+    color: aliceblue;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+  
+
+
+ /* Hide the submenu by default */
+ .submenu {
+  display: none; 
+  position: absolute;
+  top: 0%;
+  left: 30;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 10px 10px;
+  z-index: 10;
+}
+

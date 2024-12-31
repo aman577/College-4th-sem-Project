@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Nirmala's Parlor</title>
+    <!-- <link rel="stylesheet" href="hello.css"> -->
+
+    <!-- yo fonts ho -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fleur+De+Leah&family=Great+Vibes&family=Italianno&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+
+
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            /* border: 1px solid green; */
+            display: flex;
+            padding-top: 30px;
+            justify-content: center;
+        }
+
+        nav {
+
+            /* border: 1px solid rgb(12, 103, 240); */
+            display: grid;
+            list-style-type: none;
+            grid-template-columns: repeat(5, auto);
+            padding-top: 15px;
+            padding-bottom: 15px;
+            margin: auto;
+        }
+
+        nav li {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        nav li a {
+            /* border: 1px solid rgb(255, 255, 255); */
+            transition: 0.7s;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            padding: 10px 10px;
+            border-radius: 20px;
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        li a:hover {
+            color: rgb(255, 255, 255);
+            background-color: rgb(12, 63, 99);
+        }
+      
+
+        .login {
+            position: relative;
+            right: 150px;
+            top: 10px;
+            list-style-type: none;
+
+
+        }
+
+        .login a {
+            color: rgb(0, 15, 227);
+            /* background-color: rgb(58, 106, 148); */
+            background-color: transparent;
+            border: 1px solid white;
+
+        }
+
+        .login li a {
+            /* border: 1px solid rgb(255, 255, 255); */
+            transition: 0.7s;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            padding: 15px 20px;
+            border-radius: 25px;
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+
+        /* About Page Styles */
+        .about_page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            background-color: #ffffff;
+        }
+
+        /* About Header */
+        .about_header h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2e2e2e;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* About Content */
+        .about_content {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        /* About Intro */
+        .about_intro h2,
+        .our_mission h2,
+        .contact_section h2 {
+            font-size: 32px;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about_intro p,
+        .our_mission p,
+        .contact_section p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Team Section */
+        .our_team {
+            margin-bottom: 50px;
+        }
+
+        .team_members {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .team_member {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            transition: transform 0.3s ease;
+        }
+
+        .team_member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team_member img {
+            border-radius: 50%;
+            border: 5px solid #ff69b4;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .team_name {
+            font-weight: bold;
+            color: #333;
+            font-size: 20px;
+        }
+
+        .team_position {
+            font-size: 16px;
+            color: #ff69b4;
+        }
+
+        /* Our Mission Section */
+        .our_mission p {
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact_section p {
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+        }
+
+        .contact_section b {
+            color: #ff69b4;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about_content {
+                padding: 10px;
+            }
+
+            .team_members {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .team_member {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
+            .about_intro p,
+            .our_mission p,
+            .contact_section p {
+                font-size: 16px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 1st page starts here -->
+    <div class="main_photo">
+        <header>
+            <nav class="nav" id="nav">
+                <li><a href="hello.htm">HOME</a></li>
+                <li><a href="menu.htm">MENU</a></li>
+                <li><a href="Services.htm">OUR SERVICES</a></li>
+                <li><a href="#active">ABOUT US</a></li>
+                <li><a href="contact.htm">CONTACT US</a></li>
+            </nav>
+            <div class="login">
+                <li><a href="./login.php">LOGIN/REGISTER</a></li>
+            </div>
+        </header>
+    </div>
+    <!-- 1st page ends here -->
+
+    <!-- About Page Content -->
+    <div class="about_page">
+        <div class="about_header">
+            <h1>Welcome to Nirmala's Parlor</h1>
+        </div>
+        <div class="about_content">
+            <div class="about_intro">
+                <h2>Our Story</h2>
+                <p>
+                    At Nirmala's Parlor, we believe in making every client feel beautiful and confident. Our team of
+                    expert stylists
+                    specializes in offering a wide range of services, including facials, make-up, waxing, and more,
+                    using only the highest
+                    quality, organic products.
+                </p>
+                <p>
+                    Our mission is simple: to provide an experience that leaves you not just looking good but feeling
+                    amazing. We focus
+                    on personalized services tailored to your specific needs.
+                </p>
+            </div>
+
+            <div class="our_team">
+                <h2>Meet Our Team</h2>
+                <div class="team_members">
+                    <div class="team_member">
+                        <img src="./IMAGES/team_member_1.jpg" alt="Team Member 1" width="200px" height="200px">
+                        <p class="team_name">Nirmala</p>
+                        <p class="team_position">Founder & Lead Stylist</p>
+                    </div>
+                    <div class="team_member">
+                        <img src="./IMAGES/team_member_2.jpg" alt="Team Member 2" width="200px" height="200px">
+                        <p class="team_name">Sara</p>
+                        <p class="team_position">Senior Stylist</p>
+                    </div>
+                    <div class="team_member">
+                        <img src="./IMAGES/team_member_3.jpg" alt="Team Member 3" width="200px" height="200px">
+                        <p class="team_name">Rita</p>
+                        <p class="team_position">Beautician</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="our_mission">
+                <h2>Our Mission</h2>
+                <p>
+                    At Nirmala's Parlor, we aim to help you look and feel your best. Whether you are coming in for a
+                    simple facial or a
+                    full makeover, we ensure that you leave our salon feeling pampered and refreshed.
+                </p>
+                <p>
+                    We pride ourselves on offering 100% organic products that not only enhance your beauty but are also
+                    safe for your skin.
+                </p>
+            </div>
+
+            <div class="contact_section">
+                <h2>Visit Us</h2>
+                <p>
+                    Our Parlor is located in the heart of New Baneshwor, providing easy access to clients from all over
+                    the city.
+                    Book an appointment today and enjoy a personalized beauty experience!
+                </p>
+                <p><b>Address:</b> New Baneshwor, Eyeplex Ko Gully</p>
+                <p><b>Phone:</b> 9800000000</p>
+                <p><b>Email:</b> Nirmala@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footerp">
+            <p>&copy; Nirmala's. All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Gallery</title>
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <header>
+    <h1>Our Beauty Parlour Gallery</h1>
+    <p>Explore our work in different categories.</p>
+  </header>
+
+  <main class="gallery-container">
+    <!-- Categories Section -->
+    <section class="categories">
+      <h2>Select a Category</h2>
+      <button class="category-btn" data-category="hair-care">Hair Care</button>
+      <button class="category-btn" data-category="skin-care">Skin Care</button>
+      <button class="category-btn" data-category="massage">Massage</button>
+      <button class="category-btn" data-category="facial-care">Facial Care</button>
+      <button class="category-btn" data-category="nail-care">Nail Care</button>
+      <button class="category-btn" data-category="bridal-services">Bridal Services</button>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+      <div class="gallery">
+        <div class="carousel">
+          <button id="prev" class="carousel-btn">Prev</button>
+          <div class="carousel-images">
+            <!-- Images will be dynamically populated here -->
+          </div>
+          <button id="next" class="carousel-btn">Next</button>
+        </div>
+      </div>
+
+      <!-- Details Section -->
+      <div class="details-section">
+        <h3>Image Details</h3>
+        <div class="details-content">
+          <img id="details-image" src="" alt="Image" class="details-img">
+          <div class="details-text">
+            <p id="image-title">Select a category and image to view details</p>
+            <p id="image-description"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="gallery.js"></script>
+</body>
+</html>

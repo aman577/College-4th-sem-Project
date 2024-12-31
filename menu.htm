@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beauty Parlour Menu</title>
+  <link rel="stylesheet" href="menu.css">
+</head>
+
+<body>
+  <div class="main_photo">
+    <header>
+      <nav class="nav" id="nav">
+        <li><a href="hello.htm">HOME</a></li>
+        <li><a href="#active">MENU</a></li>
+        <li><a href="Services.htm">OUR SERVICES</a></li>
+        <li><a href="about.htm">ABOUT US</a></li>
+        <li><a href="contact.htm">CONTACT US</a></li>
+      </nav>
+    </header>
+
+    <main>
+      <div class="services-menu">
+        <div class="service" onmouseover="showMenu(1)" onmouseout="hideMenu(1)">
+          <img src="images/haircare.jpg" alt="Hair Care">
+          <h2>Hair Care</h2>
+          <ul id="menu-1" class="submenu">
+            <li onmouseover="showPrice('Haircut', 'Rs. 200')" onmouseout="hidePrice()">Haircut</li>
+            <li onmouseover="showPrice('Hair Spa', 'Rs. 500')" onmouseout="hidePrice()">Hair Spa</li>
+            <li onmouseover="showPrice('Hair Coloring', 'Rs. 700')" onmouseout="hidePrice()">Hair Coloring</li>
+            <li onmouseover="showPrice('Keratin Treatment', 'Rs. 1000')" onmouseout="hidePrice()">Keratin Treatment</li>
+          </ul>
+        </div>
+        <div class="service" onmouseover="showMenu(2)" onmouseout="hideMenu(2)">
+          <img src="images/facialcare.jpg" alt="Facial Care">
+          <h2>Facial Care</h2>
+          <ul id="menu-2" class="submenu">
+            <li onmouseover="showPrice('Basic Facial', 'Rs. 300')" onmouseout="hidePrice()">Basic Facial</li>
+            <li onmouseover="showPrice('Anti-aging Treatment', 'Rs. 800')" onmouseout="hidePrice()">Anti-aging Treatment
+            </li>
+            <li onmouseover="showPrice('Acne Treatment', 'Rs. 600')" onmouseout="hidePrice()">Acne Treatment</li>
+            <li onmouseover="showPrice('Gold Facial', 'Rs. 1000')" onmouseout="hidePrice()">Gold Facial</li>
+          </ul>
+        </div>
+        <div class="service" onmouseover="showMenu(3)" onmouseout="hideMenu(3)">
+          <img src="images/facialcare.jpg" alt="Eyeleash">
+          <h2>Eyeleash</h2>
+          <ul id="menu-3" class="submenu">
+            <li onmouseover="showPrice('Basic Facial', 'Rs. 300')" onmouseout="hidePrice()">Basic Facial</li>
+            <li onmouseover="showPrice('Anti-aging Treatment', 'Rs. 800')" onmouseout="hidePrice()">Anti-aging Treatment
+            </li>
+            <li onmouseover="showPrice('Acne Treatment', 'Rs. 600')" onmouseout="hidePrice()">Acne Treatment</li>
+            <li onmouseover="showPrice('Gold Facial', 'Rs. 1000')" onmouseout="hidePrice()">Gold Facial</li>
+          </ul>
+        </div>
+        <div class="service" onmouseover="showMenu(4)" onmouseout="hideMenu(4)">
+          <img src="images/facialcare.jpg" alt="Waxing">
+          <h2>Waxing</h2>
+          <ul id="menu-4" class="submenu">
+            <li onmouseover="showPrice('Basic Facial', 'Rs. 300')" onmouseout="hidePrice()">Basic Facial</li>
+            <li onmouseover="showPrice('Anti-aging Treatment', 'Rs. 800')" onmouseout="hidePrice()">Anti-aging Treatment
+            </li>
+            <li onmouseover="showPrice('Acne Treatment', 'Rs. 600')" onmouseout="hidePrice()">Acne Treatment</li>
+            <li onmouseover="showPrice('Gold Facial', 'Rs. 100')" onmouseout="hidePrice()">Gold Facial</li>
+          </ul>
+        </div>
+        <div class="service" onmouseover="showMenu(5)" onmouseout="hideMenu(5)">
+          <img src="images/facialcare.jpg" alt="Nails">
+          <h2>Nails</h2>
+          <ul id="menu-5" class="submenu">
+            <li onmouseover="showPrice('Basic Facial', 'Rs. 300')" onmouseout="hidePrice()">Basic Facial</li>
+            <li onmouseover="showPrice('Anti-aging Treatment', 'Rs. 800')" onmouseout="hidePrice()">Anti-aging Treatment
+            </li>
+            <li onmouseover="showPrice('Acne Treatment', 'Rs. 600')" onmouseout="hidePrice()">Acne Treatment</li>
+            <li onmouseover="showPrice('Gold Facial', 'Rs. 1000')" onmouseout="hidePrice()">Gold Facial</li>
+          </ul>
+        </div>
+        <div class="service" onmouseover="showMenu(6)" onmouseout="hideMenu(6)">
+          <img src="images/facialcare.jpg" alt="Makeup">
+          <h2>Makeup</h2>
+          <ul id="menu-6" class="submenu">
+            <li onmouseover="showPrice('Basic/plain makeup', 'Rs. 300')" onmouseout="hidePrice()">Basic/plain makeup
+            </li>
+            <li onmouseover="showPrice('Bride Makeup-Simple', 'Rs. 800')" onmouseout="hidePrice()">Bride Makeup simple
+            </li>
+            <li onmouseover="showPrice('Bride Makeup-medium', 'Rs. 600')" onmouseout="hidePrice()">Bride Makeup medium
+            </li>
+            <li onmouseover="showPrice('Bride Makeup heavy', 'Rs. 1000')" onmouseout="hidePrice()">Bride Makeup heavy
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="price-tooltip"></div>
+    </main>
+    <footer>
+      <div class="footerp">
+        <p> &copy; Nirmala's. All Rights Reserved</p>
+      </div>
+    </footer>
+    <script src="menu.js"></script>
+</body>
+
+</html>
