@@ -31,6 +31,28 @@
             font-size: 3rem;
             margin: 0;
         }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            background-color: #4c3a51;
+            padding: 10px 0;
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #6d4c71;
+        }
 
         .container {
             max-width: 1200px;
@@ -166,6 +188,13 @@
 <body>
 
     <header>
+        <nav>
+            <a href="hellomain.htm">HOME</a>
+            <a href="menu.htm">MENU</a>
+            <a href="Services.htm">OUR SERVICES</a>
+            <a href="about.htm">ABOUT US</a>
+            <a href="#active">CONTACT US</a>
+        </nav>
         <h1>Membership Plans</h1>
     </header>
 
