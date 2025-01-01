@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['admin'] = $username; // Store admin username in the session
         
         // Redirect to the admin dashboard
-        header("Location: admin_panel.php");
+        header("Location: admin_dashboard.php");
         exit();
     } else {
         // Invalid credentials
