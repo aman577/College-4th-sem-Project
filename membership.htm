@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Membership - Nirmala's Parlor</title>
-    <link rel="stylesheet" href="membership.css">
+    <title>Membership Plans - Nirmala's Parlor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -57,8 +56,9 @@
 
         .membership-plans {
             display: flex;
+            flex-wrap: wrap;
             gap: 20px;
-            justify-content: space-around;
+            justify-content: center;
             margin-top: 40px;
         }
 
@@ -68,6 +68,8 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
             text-align: center;
+            width: 30%;
+            min-width: 280px;
             transition: transform 0.3s;
         }
 
@@ -78,6 +80,7 @@
         .plan h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
+            color: #4c3a51;
         }
 
         .plan p {
@@ -101,58 +104,61 @@
             background-color: #6d4c71;
         }
 
+        .form-container {
+            margin-top: 50px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .form-container h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #4c3a51;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button.submit-btn {
+            background-color: #4c3a51;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button.submit-btn:hover {
+            background-color: #6d4c71;
+        }
+
         footer {
             background-color: #4c3a51;
             color: white;
             text-align: center;
             padding: 10px 0;
             margin-top: 40px;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-            background-color: #4c3a51;
-            padding: 10px 0;
-        }
-
-        .nav li {
-            display: inline;
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .nav a:hover {
-            background-color: #6d4c71;
-        }
-
-        .login {
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .login a {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            padding: 10px 15px;
-            background-color: #6d4c71;
-            border-radius: 5px;
-        }
-
-        .login a:hover {
-            background-color: #4c3a51;
         }
     </style>
 </head>
@@ -163,38 +169,51 @@
         <h1>Membership Plans</h1>
     </header>
 
-    <nav class="nav" id="nav">
-        <li><a href="hellomain.htm">HOME</a></li>
-        <li><a href="menu.htm">MENU</a></li>
-        <li><a href="Services.htm">OUR SERVICES</a></li>
-        <li><a href="about.htm">ABOUT US</a></li>
-        <li><a href="contact.htm">CONTACT US</a></li>
-    </nav>
     <div class="container">
         <div class="membership-intro">
             <h2>Become a Member Today!</h2>
-            <p>Enjoy exclusive benefits and discounts with our membership plans. Choose the one that fits your beauty needs
-                and experience premium services at Nirmala's Parlor.</p>
+            <p>Join Nirmala's Parlor for exclusive benefits and discounts. Select a plan and register below!</p>
         </div>
 
         <div class="membership-plans">
             <div class="plan">
                 <h3>Silver Plan</h3>
                 <p>- 10% off all services<br>- Complimentary coffee<br>- Free consultations</p>
-                <button onclick="location.href='silver.html'">Join Now</button>
             </div>
 
             <div class="plan">
                 <h3>Gold Plan</h3>
                 <p>- 20% off all services<br>- Complimentary coffee & snacks<br>- Free monthly facial</p>
-                <button onclick="location.href='gold.html'">Join Now</button>
             </div>
 
             <div class="plan">
                 <h3>Platinum Plan</h3>
                 <p>- 30% off all services<br>- Complimentary coffee, snacks & gifts<br>- Free monthly facial & manicure</p>
-                <button onclick="location.href='platinum.html'">Join Now</button>
             </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Register for Membership</h3>
+            <form action="register_membership.php" method="POST">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="plan">Select Plan</label>
+                <select id="plan" name="plan" required>
+                    <option value="">--Choose a Plan--</option>
+                    <option value="Silver">Silver Plan</option>
+                    <option value="Gold">Gold Plan</option>
+                    <option value="Platinum">Platinum Plan</option>
+                </select>
+
+                <button type="submit" class="submit-btn">Register Now</button>
+            </form>
         </div>
     </div>
 
