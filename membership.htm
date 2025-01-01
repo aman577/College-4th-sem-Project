@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership - Nirmala's Parlor</title>
+    <link rel="stylesheet" href="membership.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Jost:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Jost', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f5f2;
+            color: #333;
+        }
+
+        header {
+            background-color: #4c3a51;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .membership-intro {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .membership-intro h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .membership-intro p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .membership-plans {
+            display: flex;
+            gap: 20px;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .plan {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .plan:hover {
+            transform: scale(1.05);
+        }
+
+        .plan h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .plan p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .plan button {
+            background-color: #4c3a51;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .plan button:hover {
+            background-color: #6d4c71;
+        }
+
+        footer {
+            background-color: #4c3a51;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            background-color: #4c3a51;
+            padding: 10px 0;
+        }
+
+        .nav li {
+            display: inline;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav a:hover {
+            background-color: #6d4c71;
+        }
+
+        .login {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .login a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px 15px;
+            background-color: #6d4c71;
+            border-radius: 5px;
+        }
+
+        .login a:hover {
+            background-color: #4c3a51;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Membership Plans</h1>
+    </header>
+
+    <nav class="nav" id="nav">
+        <li><a href="hellomain.htm">HOME</a></li>
+        <li><a href="menu.htm">MENU</a></li>
+        <li><a href="Services.htm">OUR SERVICES</a></li>
+        <li><a href="about.htm">ABOUT US</a></li>
+        <li><a href="contact.htm">CONTACT US</a></li>
+    </nav>
+    <div class="container">
+        <div class="membership-intro">
+            <h2>Become a Member Today!</h2>
+            <p>Enjoy exclusive benefits and discounts with our membership plans. Choose the one that fits your beauty needs
+                and experience premium services at Nirmala's Parlor.</p>
+        </div>
+
+        <div class="membership-plans">
+            <div class="plan">
+                <h3>Silver Plan</h3>
+                <p>- 10% off all services<br>- Complimentary coffee<br>- Free consultations</p>
+                <button onclick="location.href='silver.html'">Join Now</button>
+            </div>
+
+            <div class="plan">
+                <h3>Gold Plan</h3>
+                <p>- 20% off all services<br>- Complimentary coffee & snacks<br>- Free monthly facial</p>
+                <button onclick="location.href='gold.html'">Join Now</button>
+            </div>
+
+            <div class="plan">
+                <h3>Platinum Plan</h3>
+                <p>- 30% off all services<br>- Complimentary coffee, snacks & gifts<br>- Free monthly facial & manicure</p>
+                <button onclick="location.href='platinum.html'">Join Now</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Nirmala's Parlor. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>

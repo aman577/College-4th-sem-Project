@@ -4,13 +4,131 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Services</title>
-  <link rel="stylesheet" href="services.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #f5f7fa, #c3cfe2);
+      color: #333;
+    }
+    header {
+      background-color: #4CAF50;
+      padding: 15px 0;
+      text-align: center;
+      color: white;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav li {
+      list-style: none;
+      display: inline;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ddd;
+    }
+    .main_photo {
+      text-align: center;
+      padding: 20px;
+      background-color: #eef2f7;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin: 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    .services-section, .staff-section {
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 1200px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .category {
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .category:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .category img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .category h3 {
+      margin-top: 10px;
+    }
+    .sub-services-section, .service-details {
+      margin-top: 20px;
+    }
+    .sub-services-section ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .sub-services-section ul li {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .sub-services-section ul li:hover {
+      background-color: #f1f1f1;
+    }
+    .details-text {
+      padding: 10px;
+    }
+    .staff {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+    .staff-member img {
+      width: 100%;
+      border-radius: 50%;
+      max-width: 150px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
     <div class="main_photo">
         <header>
             <nav class="nav" id="nav">
-                <li><a href="hello.htm">HOME</a></li>
+                <li><a href="hellomain.htm">HOME</a></li>
                 <li><a href="menu.htm">MENU</a></li>
                 <li><a href="#active">OUR SERVICES</a></li>
                 <li><a href="about.htm">ABOUT US</a></li>
@@ -20,7 +138,6 @@
     <h1>Welcome to Our Beauty Parlour</h1>
     <p>Explore our services and meet our expert staff!</p>
  
-
   <main>
     <!-- Services Section -->
     <section class="services-section">
@@ -97,6 +214,40 @@
     </section>
   </main>
 
-  <script src="services.js"></script>
+  <script>
+    // Example JavaScript for dynamic sub-services
+    const services = {
+      'hair-care': [
+        { name: 'Haircut', price: '$25', description: 'Professional haircut tailored to your style.' },
+        { name: 'Hair Coloring', price: '$50', description: 'Customized hair coloring services.' }
+      ],
+      'facial-care': [
+        { name: 'Basic Facial', price: '$30', description: 'Cleansing and refreshing facial.' },
+        { name: 'Anti-Aging Facial', price: '$60', description: 'Specialized anti-aging facial treatment.' }
+      ]
+    };
+
+    document.querySelectorAll('.category').forEach(category => {
+      category.addEventListener('click', () => {
+        const subServiceList = document.getElementById('sub-service-list');
+        const serviceDetails = services[category.dataset.category] || [];
+        subServiceList.innerHTML = '';
+        serviceDetails.forEach(service => {
+          const li = document.createElement('li');
+          li.textContent = `${service.name} - ${service.price}`;
+          li.addEventListener('click', () => {
+            document.getElementById('service-name').textContent = service.name;
+            document.getElementById('service-description').textContent = service.description;
+            document.getElementById('service-price').textContent = service.price;
+          });
+          subServiceList.appendChild(li);
+        });
+      });
+    });
+
+    function bookAppointment() {
+      alert('Booking functionality to be implemented.');
+    }
+  </script>
 </body>
 </html>
