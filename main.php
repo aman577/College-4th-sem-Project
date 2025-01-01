@@ -17,16 +17,21 @@ if (isset($_POST['login'])) {
         $user = $result->fetch_assoc();
 
         // Verify the password
-        if($password === $user['password']) {
-            // Start a session and redirect to index.php
+        if ($password === $user['password']) {
+            // Start a session and redirect to hellomain.htm
             session_start();
             $_SESSION['user'] = $user; // Store user info in the session
             header("Location: hellomain.htm");
             exit();
         } else {
-            echo "Login unsuccessful: Incorrect password.";
+            // Display an alert and redirect to the login page
+            echo "<script>
+                alert('Login unsuccessful: Incorrect password.');
+                window.location.href = 'mainlogin.php'; 
+            </script>";
             exit();
         }
+        
     } else {
         echo "Login unsuccessful: Credentials did not match.";
         exit();
