@@ -15,16 +15,26 @@ if ($conn->connect_error) {
 }
 
 // Fetch appointments
-$sql = "SELECT * FROM appointments ORDER BY date, time";
-$result = $conn->query($sql);
+$sqlAppointments = "SELECT id, name, email, phone, service, date, time FROM appointments ORDER BY date, time";
+$resultAppointments = $conn->query($sqlAppointments);
+
+// Fetch memberships
+$sqlMemberships = "SELECT id, name, email, phone, plan, registration_date FROM memberships ORDER BY registration_date DESC";
+$resultMemberships = $conn->query($sqlMemberships);
+
+//Fetch messages
+$sqlMessages = "SELECT id, name, email, message FROM messages ORDER BY id DESC";
+$resultMessages = $conn->query($sqlMessages);
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Appointment Management</title>
+    <title>Admin Panel - Management</title>
     <link rel="stylesheet" href="services.css">
     <style>
         body {
@@ -34,6 +44,7 @@ $result = $conn->query($sql);
             margin: 0;
             padding: 0;
         }
+
         header {
             background-color: #4CAF50;
             padding: 15px 0;
@@ -42,11 +53,13 @@ $result = $conn->query($sql);
             font-size: 1.5em;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         h2 {
             text-align: center;
             margin-top: 30px;
             color: #4CAF50;
         }
+
         .container {
             width: 90%;
             max-width: 1200px;
@@ -56,27 +69,33 @@ $result = $conn->query($sql);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
+
         table th, table td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: center;
         }
+
         table th {
             background-color: #4CAF50;
             color: white;
             font-weight: bold;
         }
+
         table tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
         table tr:hover {
             background-color: #f1f1f1;
         }
+
         button {
             padding: 8px 15px;
             background-color: #f44336;
@@ -86,9 +105,11 @@ $result = $conn->query($sql);
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
+
         button:hover {
             background-color: #d32f2f;
         }
+
         footer {
             text-align: center;
             margin-top: 20px;
@@ -99,10 +120,12 @@ $result = $conn->query($sql);
         }
     </style>
 </head>
+
 <body>
     <header>
-        Admin Panel - Appointment Management
+        Admin Panel - Management
     </header>
+
     <div class="container">
         <h2>Manage Appointments</h2>
 
@@ -120,19 +143,19 @@ $result = $conn->query($sql);
                 </tr>
             </thead>
             <tbody>
-                <?php if ($result->num_rows > 0): ?>
-                    <?php while ($row = $result->fetch_assoc()): ?>
+                <?php if ($resultAppointments && $resultAppointments->num_rows > 0): ?>
+                    <?php while ($row = $resultAppointments->fetch_assoc()): ?>
                         <tr>
-                            <td><?php echo $row['id']; ?></td>
-                            <td><?php echo $row['name']; ?></td>
-                            <td><?php echo $row['email']; ?></td>
-                            <td><?php echo $row['phone']; ?></td>
-                            <td><?php echo $row['service']; ?></td>
-                            <td><?php echo $row['date']; ?></td>
-                            <td><?php echo $row['time']; ?></td>
+                            <td><?php echo htmlspecialchars($row['id']); ?></td>
+                            <td><?php echo htmlspecialchars($row['name']); ?></td>
+                            <td><?php echo htmlspecialchars($row['email']); ?></td>
+                            <td><?php echo htmlspecialchars($row['phone']); ?></td>
+                            <td><?php echo htmlspecialchars($row['service']); ?></td>
+                            <td><?php echo htmlspecialchars($row['date']); ?></td>
+                            <td><?php echo htmlspecialchars($row['time']); ?></td>
                             <td>
                                 <form action="delete_appointment.php" method="POST" style="display:inline;">
-                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
                                     <button type="submit">Delete</button>
                                 </form>
                             </td>
@@ -146,9 +169,95 @@ $result = $conn->query($sql);
             </tbody>
         </table>
     </div>
+
+    <div class="container">
+        <h2>Manage Memberships</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Plan</th>
+                    <th>Registration Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($resultMemberships && $resultMemberships->num_rows > 0): ?>
+                    <?php while ($row = $resultMemberships->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['id']); ?></td>
+                            <td><?php echo htmlspecialchars($row['name']); ?></td>
+                            <td><?php echo htmlspecialchars($row['email']); ?></td>
+                            <td><?php echo htmlspecialchars($row['phone']); ?></td>
+                            <td><?php echo htmlspecialchars($row['plan']); ?></td>
+                            <td><?php echo htmlspecialchars($row['registration_date']); ?></td>
+                            <td>
+                                <form action="delete_registration.php" method="POST" style="display:inline;">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="7">No memberships found</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+    <h2>Manage Messages</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if ($resultMessages && $resultMessages->num_rows > 0): ?>
+                <?php while ($row = $resultMessages->fetch_assoc()): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($row['id']); ?></td>
+                        <td><?php echo htmlspecialchars($row['name']); ?></td>
+                        <td><?php echo htmlspecialchars($row['email']); ?></td>
+                        <td><?php echo htmlspecialchars($row['message']); ?></td>
+                        <td>
+                            <form action="delete_appointment.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="5">No messages found</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+
+
     <footer>
         &copy; <?php echo date("Y"); ?> Admin Panel, Nirmala's Beauty Parlor. All rights reserved.
     </footer>
-    <?php $conn->close(); ?>
 </body>
+
 </html>
+
+<?php
+// Close database connection
+$conn->close();
+?>
