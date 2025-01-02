@@ -176,11 +176,11 @@
     <header>
         
         <nav class="nav">
-            <li><a href="hellomain.htm">HOME</a></li>
-            <li><a href="menu.htm">MENU</a></li>
-            <li><a href="Services.htm">OUR SERVICES</a></li>
+            <li><a href="hello.php">HOME</a></li>
+            <li><a href="hellomenu.php">MENU</a></li>
+            <li><a href="helloservice.php">OUR SERVICES</a></li>
             <li><a href="#active">ABOUT US</a></li>
-            <li><a href="contact.htm">CONTACT US</a></li>
+            <li><a href="hellocontact.php">CONTACT US</a></li>
         </nav>
         <hr style="margin-top: 28px;">
         <h1>About Us</h1>

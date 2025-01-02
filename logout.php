@@ -2,6 +2,6 @@
 session_start();
 unset($_SESSION['user']);
 unset($_SESSION['password']);
-header('location:hello.htm');
+header('location:hello.php');
 die();
 ?>

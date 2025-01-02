@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Nirmala's Parlor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;700&family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Jost', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f5f2;
+            color: #333;
+        }
+
+        header {
+            background-color: #4c3a51;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            background-color: #4c3a51;
+            padding: 20px ;
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #6d4c71;
+        }
+
+        .contact-us-page {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-section h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #4c3a51;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .contact-description {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form label {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background-color: #4c3a51;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #6d4c71;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+        }
+
+        .contact-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #4c3a51;
+        }
+
+        .contact-info p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .map-container iframe {
+            border: 0;
+            width: 100%;
+            height: 400px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #4c3a51;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Navigation -->
+        <nav>
+            <a href="hello.php">HOME</a>
+            <a href="hellomenu.php">MENU</a>
+            <a href="helloService.php">OUR SERVICES</a>
+            <a href="helloabout.php">ABOUT US</a>
+            <a href="#active">CONTACT US</a>
+        </nav>
+        <hr>
+        <h1>Contact Us</h1>
+    </header>
+
+    <!-- Contact Section -->
+    <div class="contact-us-page">
+        <div class="contact-section">
+            <h1>Get in Touch</h1>
+            <p class="contact-description">We would love to hear from you! Whether you have questions, feedback, or you’re ready to book your appointment, you can get in touch with us using the form below or through our contact information.</p>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <form action="submit_contact.php" method="POST">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" required placeholder="Write your message"></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2>Our Location</h2>
+                <p><b>Address:</b> New Baneshwor, Eyeplex Ko Gully</p>
+                <p><b>Phone:</b> 9800000000</p>
+                <p><b>Email:</b> Nirmala@gmail.com</p>
+
+                <!-- Google Map -->
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2822.767338566151!2d85.32490961626382!3d27.66910942629779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a7c0f4e87%3A0x8ef93d5c41f6b2f6!2sEyeplex%20Ko%20Gully%2C%20New%20Baneshwor!5e0!3m2!1sen!2snp!4v1679711239467!5m2!1sen!2snp" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Nirmala's Parlor. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

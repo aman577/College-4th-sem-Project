@@ -1,9 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
-
+    $id = $_POST['id'];
 
     // Database connection
     $conn = new mysqli('localhost', 'root', '', 'project');
@@ -12,15 +9,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO messages (name, email, message) 
-            VALUES ('$name', '$email', 'message')";
+    $sql = "DELETE FROM messages WHERE id = $id";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Registered successfully!";
+        echo "message deleted successfully.";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error deleting appointment: " . $conn->error;
     }
 
     $conn->close();
+
+    // Redirect back to admin panel
+    header("Location: admin_panel.php");
+    exit();
 }
 ?>

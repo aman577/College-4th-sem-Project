@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO appointments (name, email, phone, plan, date) 
+    $sql = "INSERT INTO memberships (name, email, phone, plan, date) 
             VALUES ('$name', '$email', '$phone', '$plan' ,'$date')";
 
     if ($conn->query($sql) === TRUE) {

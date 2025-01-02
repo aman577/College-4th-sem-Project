@@ -196,7 +196,7 @@ $resultMessages = $conn->query($sqlMessages);
                             <td><?php echo htmlspecialchars($row['plan']); ?></td>
                             <td><?php echo htmlspecialchars($row['registration_date']); ?></td>
                             <td>
-                                <form action="delete_registration.php" method="POST" style="display:inline;">
+                                <form action="membership_delete.php" method="POST" style="display:inline;">
                                     <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
                                     <button type="submit">Delete</button>
                                 </form>
@@ -233,7 +233,7 @@ $resultMessages = $conn->query($sqlMessages);
                         <td><?php echo htmlspecialchars($row['email']); ?></td>
                         <td><?php echo htmlspecialchars($row['message']); ?></td>
                         <td>
-                            <form action="delete_appointment.php" method="POST" style="display:inline;">
+                            <form action="contact_delete.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
                                 <button type="submit">Delete</button>
                             </form>

@@ -40,10 +40,10 @@
            <span class="beauty"> BEAUTY</span> <span class="salon"> SALON</span>        </div> -->
             <nav class="nav" id="nav">
                 <li><a href="#active">HOME</a></li>
-                <li><a href="menu.htm">MENU</a></li>
-                <li><a href="Services.htm">OUR SERVICES</a></li>
-                <li><a href="about.htm">ABOUT US</a></li>
-                <li><a href="contact.htm">CONTACT US</a></li>
+                <li><a href="hellomenu.php">MENU</a></li>
+                <li><a href="helloservice.php">OUR SERVICES</a></li>
+                <li><a href="helloabout.php">ABOUT US</a></li>
+                <li><a href="hellocontact.php">CONTACT US</a></li>
             </nav>
             <div class="login">
                 <li><a href="./mainlogin.php">LOGIN/REGISTER</a></li>
