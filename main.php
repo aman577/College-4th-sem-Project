@@ -1,43 +1,45 @@
-
 <?php
-include 'connect.php';
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "project";
 
-if (isset($_POST['login'])) {
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if the form is submitted for login
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
+    // Get form data
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Check if email exists
-    $check_email_query = "SELECT * FROM users WHERE email = ?";
-    $stmt = $con->prepare($check_email_query);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // Check if user exists
+    $sql_check_user = "SELECT * FROM users WHERE email = '$email'";
+    $result = $conn->query($sql_check_user);
 
     if ($result->num_rows > 0) {
+        // User found, check password
         $user = $result->fetch_assoc();
-
-        // Verify the password
-        if ($password === $user['password']) {
-            // Start a session and redirect to hellomain.htm
-            session_start();
-            $_SESSION['user'] = $user; // Store user info in the session
-            header("Location: hellomain.htm");
+        if ($user['password'] == $password) {
+            // Password matches, login success
+            $_SESSION['user'] = $user; // Set user data in session
+            header("Location: hellomain.htm"); // Redirect to the user's dashboard or home page
             exit();
         } else {
-            // Display an alert and redirect to the login page
-            echo "<script>
-                alert('Login unsuccessful: Incorrect password.');
-                window.location.href = 'mainlogin.php'; 
-            </script>";
-            exit();
+            // Incorrect password
+            echo "Invalid password. Please try again.";
         }
-        
     } else {
-        echo "Login unsuccessful: Credentials did not match.";
-        exit();
+        // User not found
+        echo "Email is not registered. Please sign up.";
     }
-} else {
-    echo "Invalid request.";
-    exit();
 }
+
+$conn->close();
 ?>

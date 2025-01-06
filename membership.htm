@@ -151,6 +151,8 @@
             font-size: 1rem;
             font-weight: bold;
             color: #333;
+           
+
         }
 
         input, select {
@@ -158,6 +160,7 @@
             font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 5px;
+            box-sizing: border-box;
         }
 
         button.submit-btn {
@@ -182,6 +185,41 @@
             padding: 10px 0;
             margin-top: 40px;
         }
+        /* validation style */
+        .error-message {
+        color: red;
+        font-size: 0.9rem;
+        margin-top: -5px;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    input, select {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    input:focus, select:focus {
+        outline: none;
+        border-color: #6d4c71;
+    }
+
+    .submit-btn {
+        background-color: #4c3a51;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+        background-color: #6d4c71;
+    }
     </style>
 </head>
 
@@ -207,42 +245,47 @@
         <div class="membership-plans">
             <div class="plan">
                 <h3>Silver Plan</h3>
-                <p>- 10% off all services<br>- Complimentary coffee<br>- Free consultations</p>
+                <p>- 10% off all services<br>- Complimentary coffee<br>- Free consultations<br><br><strong style="font-size: 20px;">RS: 1000</strong></p>
             </div>
 
             <div class="plan">
                 <h3>Gold Plan</h3>
-                <p>- 20% off all services<br>- Complimentary coffee & snacks<br>- Free monthly facial</p>
+                <p>- 20% off all services<br>- Complimentary coffee & snacks<br>- Free monthly facial<br><br><strong style="font-size: 20px;">RS: 2000</strong></p>
             </div>
 
             <div class="plan">
                 <h3>Platinum Plan</h3>
-                <p>- 30% off all services<br>- Complimentary coffee, snacks & gifts<br>- Free monthly facial & manicure</p>
+                <p>- 30% off all services<br>- Complimentary coffee, snacks & gifts<br>- Free monthly facial & manicure<br><br><strong style="font-size: 20px;">RS: 5000</strong></p>
             </div>
         </div>
 
         <div class="form-container">
             <h3>Register for Membership</h3>
-            <form action="register_membership.php" method="POST">
+            <form action="#" method="POST" onsubmit="return initiateEsewaPayment()">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-
+                <input type="text" id="name" name="name" placeholder="Enter your full name" oninput="validateName()" required>
+                <span id="nameError" class="error-message"></span>
+            
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
+                <input type="email" id="email" name="email" placeholder="Enter your email" oninput="validateEmail()" required>
+                <span id="emailError" class="error-message"></span>
+            
                 <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-                
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" oninput="validatePhone()" required>
+                <span id="phoneError" class="error-message"></span>
+            
                 <label for="plan">Select Plan</label>
-                <select id="plan" name="plan" required>
+                <select id="plan" name="plan" onchange="validatePlan()" required>
                     <option value="">--Choose a Plan--</option>
                     <option value="Silver">Silver Plan</option>
                     <option value="Gold">Gold Plan</option>
                     <option value="Platinum">Platinum Plan</option>
                 </select>
-
-                <button type="submit" class="submit-btn">Register Now</button>
+                <span id="planError" class="error-message"></span>
+            
+                <button type="submit" class="submit-btn" onclick="initiateEsewaPayment">Register Now</button>
             </form>
+            
         </div>
     </div>
 
@@ -251,5 +294,119 @@
     </footer>
 
 </body>
+<script>
+    function validateName() {
+        const nameField = document.getElementById("name");
+        const nameError = document.getElementById("nameError");
+        const name = nameField.value.trim();
+
+        if (!/^[A-Za-z\s]+$/.test(name)) {
+            nameError.textContent = "Name must only contain letters and spaces.";
+            nameField.style.borderColor = "red";
+        } else {
+            nameError.textContent = "";
+            nameField.style.borderColor = "green";
+        }
+    }
+
+    function validateEmail() {
+        const emailField = document.getElementById("email");
+        const emailError = document.getElementById("emailError");
+        const email = emailField.value.trim();
+
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            emailError.textContent = "Please enter a valid email address.";
+            emailField.style.borderColor = "red";
+        } else {
+            emailError.textContent = "";
+            emailField.style.borderColor = "green";
+        }
+    }
+
+    function validatePhone() {
+        const phoneField = document.getElementById("phone");
+        const phoneError = document.getElementById("phoneError");
+        const phone = phoneField.value.trim();
+
+        if (!/^(98|97|96)\d{8}$/.test(phone)) {
+            phoneError.textContent = "Enter a valid Nepalese phone number (starts with 98, 97, or 96).";
+            phoneField.style.borderColor = "red";
+        } else {
+            phoneError.textContent = "";
+            phoneField.style.borderColor = "green";
+        }
+    }
+
+    function validatePlan() {
+        const planField = document.getElementById("plan");
+        const planError = document.getElementById("planError");
+
+        if (planField.value === "") {
+            planError.textContent = "Please select a membership plan.";
+            planField.style.borderColor = "red";
+        } else {
+            planError.textContent = "";
+            planField.style.borderColor = "green";
+        }
+    }
+
+    function validateMembershipForm() {
+        validateName();
+        validateEmail();
+        validatePhone();
+        validatePlan();
+
+        // Check if any errors exist
+        const errors = document.querySelectorAll(".error-message");
+        for (const error of errors) {
+            if (error.textContent !== "") {
+                alert("Please correct the highlighted errors before submitting.");
+                return false;
+            }
+        }
+        return true; // Proceed with submission if no errors
+    }
+
+    // payment integration api
+  
+    function initiateEsewaPayment() {
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Redirect to the eSewa payment gateway
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://uat.esewa.com.np/epay/main';
+
+    // Test payment parameters
+    const params = {
+        amt: '100', // Amount in NPR
+        pdc: '0',   // Product discount
+        psc: '0',   // Product service charge
+        txAmt: '0', // Tax amount
+        tAmt: '100', // Total amount
+        pid: 'TEST_TXN_' + new Date().getTime(), // Unique transaction ID
+        scd: 'EPAYTEST', // Test merchant code
+        su: 'http://yourwebsite.com/success.php?q=su', // Success URL
+        fu: 'http://yourwebsite.com/failure.php?q=fu'  // Failure URL
+    };
+
+    // Append input fields to the form
+    for (const key in params) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = params[key];
+        form.appendChild(input);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+
+    return false; // Prevent default form submission
+}
+
+</script>
+
 
 </html>

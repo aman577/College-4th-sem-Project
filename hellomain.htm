@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PARLOR MANAGEMENT SYSTEM</title>
-    <link rel="stylesheet" href="hello.css">
+    <!-- <link rel="stylesheet" href="hello.css"> -->
 
 
     <!-- yo fonts ho -->
@@ -26,6 +26,1706 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 </head>
+<style>
+    
+    .page-6{
+        height: 500px;
+        background-image: url(./bg-03.jpg);
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .page6p1,
+    .page6p2,
+    .page6p3,
+    .page6btn {
+        /* border: 2px solid black; */
+        display: flex;
+        justify-content: center;
+        color: white;
+    }
+    
+    .page-6 .page6p1 {
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-size: 18px;
+        font-weight: 450;
+        font-style: normal;
+        letter-spacing: 2px;
+    
+    }
+    
+    .page-6 .page6p2 p .span1 {
+        font-size: 5rem;
+    }
+        .page-6 .page6p2 p .span1 {
+        font-size: 5rem;
+    }
+    
+    .page-6 .page6p2 p .span2 {
+        font-size: 6rem;
+        font-weight: 700;
+        font-family: 'Jost', sans-serif;
+    }
+    
+    .page-6 .page6p2 {
+        font-family: "Vollkorn", serif;
+        font-weight: 400;
+        font-style: normal;
+    
+    
+    }
+    
+    .page-6 .page6p3 {
+        position: relative;
+        top: -50px;
+        font-size: 3.5rem;
+        font-family: "Vollkorn", serif;
+        font-weight: 400;
+        font-style: normal;
+    
+    }
+    
+    .page6btn button {
+        position: relative;
+        top: -50px;
+        padding: 15px 30px 15px;
+        color: aliceblue;
+        background-color: transparent;
+        border: 1px solid white;
+        font-size: 0.9rem;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 2px;
+    }
+    
+    .page6btn button:hover {
+        background-color: white;
+        color: black;
+        transition: 0.7s;
+    }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    #hi{
+    position: relative;
+    right:70px;
+}    
+#hello{
+    position: relative;
+    left:70px;
+}
+    header {
+        /* border: 1px solid green; */
+        display: flex;
+        padding-top: 30px;
+        justify-content: center;
+    }
+    
+    nav {
+    
+        /* border: 1px solid rgb(12, 103, 240); */
+        display: grid;
+        list-style-type: none;
+        grid-template-columns: repeat(5, auto);
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin: auto;
+    }
+    
+    nav li {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    nav li a {
+        /* border: 1px solid rgb(255, 255, 255); */
+        transition: 0.7s;
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        padding: 10px 10px;
+        border-radius: 20px;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 2px;
+    }
+    
+    li a:hover {
+        color: rgb(0, 0, 0);
+        background-color: rgb(168, 152, 132);
+    }
+    .login {
+        position: relative;
+        right: 100px;
+        top: 17px;
+        /* border: 1px solid green; */
+        color: rgb(205, 123, 30);
+        list-style-type: none;
+        
+        
+    }
+    .login a{
+        color:rgb(45, 52, 148);
+        /* background-color: rgb(58, 106, 148); */
+        background-color: transparent;
+        border: 1px solid white;
+        
+    }
+    .login li a {
+        /* border: 1px solid rgb(255, 255, 255); */
+        transition: 0.7s;
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        padding: 15px 20px;
+        border-radius: 25px;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 2px;
+    }
+    
+    
+    .main_photo {
+        /* border: 2px solid red; */
+        background-image: url(./1stimg.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 700px;
+    }
+    
+    .main_photo .text1,
+    .text2 {
+        color: white;
+        display: flex;
+        justify-content: center;
+        font-size: 5rem;
+        font-family: "Vollkorn", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+    
+    .main_photo .text {
+        /* border: 1px solid rgb(255, 255, 255); */
+        position: relative;
+        top: 120px;
+    }
+    
+    .main_photo .fade_text {
+        /* border: 1px solid rgb(237, 33, 255); */
+        display: flex;
+        position: relative;
+        top: -200px;
+        justify-content: center;
+        color: rgb(255, 255, 255);
+        font-size: 13rem;
+        opacity: 0.15;
+        font-family: "Fleur De Leah", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .main_photo .btn{
+        /* margin: 60px auto 0; */
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: -100px;
+    }
+    .btn a{
+        width: 250px;
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        margin: 0 10px;
+        font-size: 20px; 
+        padding: 20px 0;
+        border: 1px solid white;
+        position: relative;
+        z-index: 1;
+        transition:color 0.5s;
+        font-size: 0.85rem;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        letter-spacing: 3px;
+        font-style: normal;
+    }
+    .btn a span
+     {
+        width: 0%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: white;
+        z-index: -1;
+        transition: 0.5s;
+    }
+    .btn a:hover span{
+        width: 100%;
+    }
+    .btn a:hover {
+        color: rgb(0, 0, 0);
+        /* font-weight: bold; */
+    }
+    
+    /* 2nd page starts here*/
+    .page2 {
+        /* border: 2px solid black; */
+        flex-direction: column;
+        display: flex;
+    }
+    
+    .para1 p,
+    .para2 p,
+    .images p {
+        /* border: 2px solid blue; */
+        display: flex;
+        justify-content: center;
+    }
+    
+    .para1 p {
+        padding-top: 100px;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: rgb(104, 100, 100);
+    }
+    
+    .para2p1 {
+        font-size: 80px;
+        opacity: 0.1;
+        font-family: "Alex Brush", cursive;
+    }
+    
+    .para2p2 {
+        top: -90px;
+        position: relative;
+        font-size: 60px;
+    }
+    
+    .para3p3 {
+        position: relative;
+        top: -50px;
+        font-size: 20px;
+        line-height: 30px;
+        color: rgb(119, 119, 119);
+    
+    
+    }
+    
+    .para2p2,
+    .para3p3 {
+        font-family: "Vollkorn", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+    
+    .click
+    
+    /* .facial,.eyelash,.eyebrow,.waxing,.nails,.make-up */
+        {
+        margin-left: 40px;
+        margin-right: 40px;
+        display: flex;
+        align-items: center;
+        justify-content:space-evenly;
+        gap: 2rem;
+        margin-top: 5rem;
+        /* border: 1px solid green; */
+    }
+    .click a{
+        text-decoration: none;
+    }
+    .row {
+    
+        height: 130px;
+        width: 130px;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+    }
+    
+    .row img {
+        /* border: 1px solid red; */
+        width: 100%;
+        border-radius: 8px;
+        display: block;
+        transition: transform 0.5s;
+    }
+    .row:hover img {
+        transform: scale(1.5);
+        
+    
+    }
+    
+    .row p {
+        /* border: 1px solid rgb(93, 12, 109); */
+        color: rgb(75, 75, 75);
+        font-size: 20px;
+        text-align: center;
+        align-items: center;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        letter-spacing: 2px;
+        font-style: normal;
+    }
+    
+    .page2button {
+        display: flex;
+        justify-content: center;
+        padding-top: 80px;
+        padding-bottom: 30px;
+    
+    }
+    
+    .page2button button {
+        padding: 15px 40px 15px;
+        color: rgb(0, 0, 0);
+        background-color: transparent;
+        border: 1px solid rgb(0, 0, 0);
+        font-size: 0.85rem;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        letter-spacing: 2px;
+        font-style: normal;
+    }
+    
+    .page2button button:hover {
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+        transition: 0.7s;
+    }
+    /*2nd page starts here*/
+    
+    
+    /*3rd page starts here*/
+    
+    .page-3 .page3main {
+        display: flex;
+        justify-content: center;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+        letter-spacing: 2px;
+        color: rgb(104, 100, 100);
+    }
+    
+    .page-3 h1 {
+        display: flex;
+        justify-content: center;
+        font-size: 5rem;
+        opacity: 0.15;
+        font-family: "Alex Brush", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .page-3 h2 {
+        display: flex;
+        font-size: 3.5rem;
+        justify-content: center;
+        position: relative;
+        font-family: "Vollkorn", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        top: -60px;
+    }
+    /*3rd page ends here*/
+    
+    /*4th page starts here*/
+    .page-4 .mainsection {
+        position: relative;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        /* border: 2px solid rgb(255, 150, 150); */
+        display: flex;
+        justify-content: center;
+    }
+    
+    .page-4 .mainsection .section1 {
+        /* border: 2px solid blue; */
+        padding-left: 20px;
+        padding-right: 80px;
+    }
+    
+    
+    .page-4 .mainsection .p3-1stspan {
+        position: relative;
+        top: 50px;
+        /* border: 2px solid black; */
+        font-size: 15px;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: rgb(104, 100, 100);
+    }
+    
+    .page-4 .mainsection .section2 .p3-h1 {
+        padding-top: 70px;
+        font-size: 55px;
+        font-family: "Vollkorn", serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+    }
+    
+    .page-4 .mainsection .section2 .page4p {
+        padding-top: 50px;
+    }
+    
+    .page-4 .mainsection .section2 .page4p,
+    .page4p2,
+    .page4p3 {
+        font-family: "Vollkorn", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 30px;
+        color: rgb(0, 0, 0);
+    }
+    
+    /*4th page ends here*/
+    
+    /*5th page starts here*/
+    
+    .page-5 .mainsection {
+        /* position: relative; */
+        /* width: 90%; */
+        padding-top: 50px;
+        padding-bottom: 50px;
+        /* border: 2px solid rgb(255, 150, 150); */
+        display: flex;
+        justify-content: center;
+    
+    }
+    
+    .page-5 .mainsection .section1 {
+        /* border: 2px solid blue; */
+        width: 600px;
+        position: relative;
+        left: 20px;
+        /* padding-left: 50px; */
+        /* padding-left: 120px;  */
+    }
+    
+    .page-5 .mainsection .section1 .p5-1stspan {
+        font-family: "Jost", sans-serif;
+        /* font-optical-sizing: auto; */
+        font-style: normal;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: rgb(104, 100, 100);
+    }
+    
+    .page-5 .mainsection .section1 .p5-h1 {
+        padding-top: 25px;
+        font-family: "Vollkorn", serif;
+        font-size: 55px;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        /* border: 2px solid black; */
+    }
+    
+    .page-5 .mainsection .section1 .page5p {
+        font-family: "Vollkorn", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        text-align: justify;
+        font-size: 20px;
+        line-height: 30px;
+        padding-right: 20px;
+        padding-top: 20px;
+        color: rgb(104, 100, 100);
+    }
+    
+    .page-5 .mainsection .section2 {
+        /* border: 2px solid black; */
+        width: 600px;
+        padding-left: 100px;
+        padding-top: 30px;
+        position: relative;
+        left: 20px;
+        font-size: 23px;
+        /* padding-left: 100px; */
+    }
+    
+    .page-5 .mainsection .section2 .p3-span {
+        /* border: 2px solid black; */
+        font-family: "Vollkorn", serif;
+        font-style: normal;
+    }
+    
+    .page-5 .mainsection .section2 .p3-2ndspan {
+        font-family: "Vollkorn", serif;
+        font-style: normal;
+    }
+    
+    .page-5 .mainsection .section2 .page5p,
+    .page5p2 {
+        font-family: "Vollkorn", serif;
+        font-style: normal;
+        color: rgb(0, 0, 0);
+    }
+    
+    .page-5 .mainsection .section2 .dotted {
+        border: none;
+        border-top: 2px dotted #000;
+        margin-top: 5px;
+    }
+    
+    /*5th page ends here*/
+    
+    /*7th page starts here*/
+    
+    .page-7 .page7-main .section1 .page7header p,
+    .h2-1st,
+    .secondh2 {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .page-7 .page7-main .section1 .page7header p {
+        padding-top: 50px;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 2px;
+        color: rgb(104, 100, 100);
+    }
+    
+    .page-7 .page7-main .section1 .h2-1st {
+        font-size: 5rem;
+        opacity: 0.15;
+        font-family: "Alex Brush", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .page-7 .page7-main .section1 .secondh2 {
+        position: relative;
+        top: -65px;
+        font-family: "Vollkorn", serif;
+        font-weight: 400;
+        font-size: 3.8rem;
+        font-style: normal;
+    }
+    .page-7 .page7-main .container{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 100px;
+    }
+    
+    
+    .page-7 .page7-main .container .section2 .img1 .p1,
+    .page-7 .page7-main .container .section3 .img2 .p1,
+    .page-7 .page7-main .container .section4 .img3 .p1 {
+    
+    
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+        letter-spacing: 2px;
+        color: rgb(104, 100, 100);
+        padding-top: 30px;
+    
+    }
+    
+    .page-7 .page7-main .container .section2 .img1 .p2,
+    .page-7 .page7-main .container .section3 .img2 .p2,
+    .page-7 .page7-main .container .section4 .img3 .p2 {
+    
+        font-family: "Vollkorn", serif;
+        font-weight: 400;
+        line-height: 35px;
+        font-size: 1.7rem;
+    
+    }
+    
+    .page-7 .page7-main .container .section2 .img1 .p3,
+    .page-7 .page7-main .container .section3 .img2 .p3,
+    .page-7 .page7-main .container .section4 .img3 .p3 {
+    
+        font-family: "Vollkorn", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-size: 19px;
+        line-height: 30px;
+        color: rgb(104, 100, 100);
+    
+    }
+    .page-7 .page7-main .container .section4{
+        padding-left: 25px;
+    }
+    .page-7 .page7-main .container .section3{
+        padding-left: 25px;
+    }
+    /*7th page ends here*/
+    
+    
+    /*8th page starts here*/
+    
+    .page-8 .container .section1 .page8header p {
+        display: flex;
+        justify-content: center;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 2px;
+        color: rgb(104, 100, 100);
+    }
+    .page-8 .container .section1 .h2-page8 {
+        display: flex;
+        justify-content: center;
+        font-family: "Vollkorn", serif;
+        font-weight: 400;
+        font-size: 3.7rem;
+        font-style: normal;
+        padding-top: 10px;
+    }
+    .page-8 .container .section1 {
+        padding-bottom: 50px;
+    }
+    .page-8 .container .section2{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .page-8 .container .section2 .img1 h5,
+    .page-8 .container .section2 .img2 h5 {
+        font-family: "Vollkorn", serif;
+        font-style: normal;
+        padding-top: 50px;
+        display: flex;
+        justify-content: center;
+        font-weight: 500;
+        font-size: 2rem;
+    }
+    .page-8 .container{
+        padding-bottom: 50px;
+    }
+    /*8th page ends here*/
+    
+    
+    /*9th page starts here*/
+    
+    .page-9 .container{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 20px;
+        justify-content: space-evenly;
+    }
+    
+    .page-9 .container .section3 button{
+        padding: 20px 40px 20px;
+        color: aliceblue;
+        background-color: black;
+        border: #000;
+        font-size: 0.9rem;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 2px;
+    }
+    .page-9  .section3 input{
+    
+        padding: 15px 20px 20px;
+        color: rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+        font-size: 1rem;
+        border: 1px solid rgb(160, 160, 160);
+    }
+    
+    
+    .page-9 .container .section3 button:hover {
+        background-color: white;
+        color: black;
+        transition: 0.7s;
+        border: 1px solid black;
+        overflow: hidden;
+    }
+    
+    .page-9 .container .section1 h2,
+    .page-9 .container .section2 h2,
+    .page-9 .container .section3 h2 {
+    
+        font-family: "Vollkorn", serif;
+        font-weight: 400;
+        font-style: normal;
+        padding-bottom: 25px;
+    
+    }
+    
+    .page-9 .container .section1 .p1,
+    .p2 {
+        font-family: "Vollkorn", serif;
+        font-style: normal;
+        font-size: 20px;
+        color: rgb(104, 100, 100);
+    }
+    
+    .page-9 .container .section2 .p4,
+    .p5,
+    .p6
+    {
+        font-family: "Vollkorn", serif;
+        font-style: normal;
+        font-size: 20px;
+        padding-right: 20px;
+        color: rgb(104, 100, 100);
+    }
+    .page-9 .container .section2 .p7{
+        
+        font-family: "Vollkorn", serif;
+        font-weight: 600;
+        font-size: 25px;
+        padding-top: 20px;
+       
+    
+    }
+    
+    .page-9 .container .section3 .p8{
+        font-family: "Vollkorn", serif;
+        font-style: normal;
+        font-size: 20px;
+        padding-right: 20px;
+        color: rgb(104, 100, 100);
+    }
+    
+    /*9th page ends here*/
+    
+    /* Footer-Start */
+    
+    
+    footer {
+        display: flex;
+        background-color: black;
+        color: aliceblue;
+        justify-content: center;
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+    
+    
+    /* Footer-End */
+    
+    
+    /* responsive is here */
+    
+    @media only screen and (max-width:375px) {
+    
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        header {
+            /* border: 1px solid green; */
+            display: flex;
+            padding-top: 30px;
+            justify-content: center;
+        }
+        
+        /* .logo {
+            color: antiquewhite;
+            border: 2px solid rgb(255, 255, 255);
+            width:30%;
+            display: grid;
+            justify-content: center;
+        
+        
+        }
+        .beauty{
+            padding-left: 8px;
+        }
+        .salon{
+            padding-left: 13px;
+        } */
+        
+        nav {
+        
+            /* border: 1px solid rgb(12, 103, 240); */
+            display: grid;
+            list-style-type: inherit;
+            grid-template-columns: repeat(5, inline-block);
+            padding-top: 15px;
+            padding-bottom: 15px;
+            margin: auto;
+        }
+        
+        nav li {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        nav li a {
+            /* border: 1px solid rgb(255, 255, 255); */
+            transition: 0.7s;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            padding: 10px 10px;
+            border-radius: 20px;
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+        
+        li a:hover {
+            color: rgb(0, 0, 0);
+            background-color: rgb(168, 152, 132);
+        }
+        .login {
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            right: 5px;
+            /* top: 10px; */
+            /* border: 1px solid green; */
+            color: rgb(205, 123, 30);
+            list-style-type: none;
+            
+            
+        }
+        .login a{
+            color:rgb(45, 52, 148);
+            background-color: rgb(58, 106, 148);
+            
+        }
+        .login li a {
+            /* border: 1px solid rgb(255, 255, 255); */
+            transition: 0.7s;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            padding: 10px 10px;
+            border-radius: 20px;
+            font-style: normal;
+            font-weight: 200;
+            letter-spacing: 2px;
+        }
+        
+        
+        .main_photo {
+            /* border: 2px solid red; */
+            background-image: url(/IMAGES/1stimg.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 700px;
+        }
+        
+        .main_photo .text1,
+        .text2 {
+            color: white;
+            display: flex;
+            justify-content: center;
+            font-size: 5rem;
+            font-family: "Vollkorn", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+        
+        .main_photo .text {
+            /* border: 1px solid rgb(255, 255, 255); */
+            position: relative;
+            top: 120px;
+        }
+        
+        .main_photo .fade_text {
+            /* border: 1px solid rgb(237, 33, 255); */
+            display: flex;
+            position: relative;
+            top: -200px;
+            justify-content: center;
+            color: rgb(255, 255, 255);
+            font-size: 13rem;
+            opacity: 0.15;
+            font-family: "Fleur De Leah", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        .main_photo .btn{
+            /* margin: 60px auto 0; */
+            display: flex;
+            justify-content: center;
+            position: relative;
+            top: -160px;
+        }
+        .btn a{
+            width: 250px;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 20px; 
+            padding: 10px 0;
+            border: 2px solid white;
+            position: relative;
+            z-index: 1;
+            transition:color 0.5s;
+        }
+        .btn a span
+         {
+            width: 0%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: white;
+            z-index: -1;
+            transition: 0.5s;
+        }
+        .btn a:hover span{
+            width: 100%;
+        }
+        .btn a:hover {
+            color: rgb(0, 0, 0);
+            /* font-weight: bold; */
+        }
+        
+        /* 2nd page starts here*/
+        .page2 {
+            /* border: 2px solid black; */
+            flex-direction: column;
+            display: flex;
+        }
+        
+        .para1 p,
+        .para2 p,
+        .images p {
+            /* border: 2px solid blue; */
+            display: flex;
+            justify-content: center;
+        }
+        
+        .para1 p {
+            padding-top: 100px;
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            letter-spacing: 2px;
+            font-weight: 500;
+            color: rgb(104, 100, 100);
+        }
+        
+        .para2p1 {
+            font-size: 80px;
+            opacity: 0.1;
+            font-family: "Alex Brush", cursive;
+        }
+        
+        .para2p2 {
+            top: -90px;
+            position: relative;
+            font-size: 60px;
+        }
+        
+        .para3p3 {
+            position: relative;
+            top: -50px;
+            font-size: 20px;
+            line-height: 30px;
+            color: rgb(119, 119, 119);
+        
+        
+        }
+        
+        .para2p2,
+        .para3p3 {
+            font-family: "Vollkorn", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+        
+        .click
+        
+        /* .facial,.eyelash,.eyebrow,.waxing,.nails,.make-up */
+            {
+            margin-left: 40px;
+            margin-right: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 5rem;
+        }
+        .click a{
+            text-decoration: none;
+        }
+        .row {
+            height: 130px;
+            width: 130px;
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .row img {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+            transition: transform 0.5s;
+        }
+        .row:hover img {
+            transform: scale(1.5);
+        
+        }
+        
+        .row h {
+            color: rgb(75, 75, 75);
+            font-size: 20px;
+            text-align: center;
+            align-items: center;
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            letter-spacing: 2px;
+            font-style: normal;
+        }
+        
+        .page2button {
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        
+        }
+        
+        .page2button button {
+            padding: 15px 40px 15px;
+            color: rgb(0, 0, 0);
+            background-color: transparent;
+            border: 1px solid rgb(0, 0, 0);
+            font-size: 0.85rem;
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-style: normal;
+        }
+        
+        .page2button button:hover {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            transition: 0.7s;
+        }
+        /*2nd page starts here*/
+        
+        
+        /*3rd page starts here*/
+        
+        .page-7 .page7main {
+            display: flex;
+            justify-content: center;
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            letter-spacing: 2px;
+            color: rgb(104, 100, 100);
+        }
+        
+        .page-7 h1 {
+            display: flex;
+            justify-content: center;
+            font-size: 5rem;
+            opacity: 0.15;
+            font-family: "Alex Brush", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        .page-7 h2 {
+            display: flex;
+            font-size: 3.5rem;
+            justify-content: center;
+            position: relative;
+            font-family: "Vollkorn", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            top: -60px;
+        }
+        /*3rd page ends here*/
+        
+        /*4th page starts here*/
+        .page-4 .mainsection {
+            position: relative;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            /* border: 2px solid rgb(255, 150, 150); */
+            display: flex;
+            justify-content: center;
+        }
+        
+        .page-4 .mainsection .section1 {
+            /* border: 2px solid blue; */
+            padding-left: 20px;
+            padding-right: 80px;
+        }
+        
+        
+        .page-4 .mainsection .p3-1stspan {
+            position: relative;
+            top: 50px;
+            /* border: 2px solid black; */
+            font-size: 15px;
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            letter-spacing: 2px;
+            font-weight: 500;
+            color: rgb(104, 100, 100);
+        }
+        
+        .page-4 .mainsection .section2 .p3-h1 {
+            padding-top: 70px;
+            font-size: 55px;
+            font-family: "Vollkorn", serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        .page-4 .mainsection .section2 .page4p {
+            padding-top: 50px;
+        }
+        
+        .page-4 .mainsection .section2 .page4p,
+        .page4p2,
+        .page4p3 {
+            font-family: "Vollkorn", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 25px;
+            line-height: 30px;
+            color: rgb(0, 0, 0);
+        }
+        
+        /*4th page ends here*/
+        
+        /*5th page starts here*/
+        
+        .page-5 .mainsection {
+            /* position: relative; */
+            /* width: 90%; */
+            padding-top: 50px;
+            padding-bottom: 50px;
+            /* border: 2px solid rgb(255, 150, 150); */
+            display: flex;
+            justify-content: center;
+        
+        }
+        
+        .page-5 .mainsection .section1 {
+            /* border: 2px solid blue; */
+            width: 600px;
+            position: relative;
+            left: 20px;
+            /* padding-left: 50px; */
+            /* padding-left: 120px;  */
+        }
+        
+        .page-5 .mainsection .section1 .p5-1stspan {
+            font-family: "Jost", sans-serif;
+            /* font-optical-sizing: auto; */
+            font-style: normal;
+            letter-spacing: 2px;
+            font-weight: 500;
+            color: rgb(104, 100, 100);
+        }
+        
+        .page-5 .mainsection .section1 .p5-h1 {
+            padding-top: 25px;
+            font-family: "Vollkorn", serif;
+            font-size: 55px;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            /* border: 2px solid black; */
+        }
+        
+        .page-5 .mainsection .section1 .page5p {
+            font-family: "Vollkorn", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            text-align: justify;
+            font-size: 20px;
+            line-height: 30px;
+            padding-right: 20px;
+            padding-top: 20px;
+            color: rgb(104, 100, 100);
+        }
+        
+        .page-5 .mainsection .section2 {
+            /* border: 2px solid black; */
+            width: 600px;
+            padding-left: 100px;
+            padding-top: 30px;
+            position: relative;
+            left: 20px;
+            font-size: 23px;
+            /* padding-left: 100px; */
+        }
+        
+        .page-5 .mainsection .section2 .p3-span {
+            /* border: 2px solid black; */
+            font-family: "Vollkorn", serif;
+            font-style: normal;
+        }
+        
+        .page-5 .mainsection .section2 .p3-2ndspan {
+            font-family: "Vollkorn", serif;
+            font-style: normal;
+        }
+        
+        .page-5 .mainsection .section2 .page5p,
+        .page5p2 {
+            font-family: "Vollkorn", serif;
+            font-style: normal;
+            color: rgb(0, 0, 0);
+        }
+        
+        .page-5 .mainsection .section2 .dotted {
+            border: none;
+            border-top: 2px dotted #000;
+            margin-top: 5px;
+        }
+        
+        /*5th page ends here*/
+        
+        
+        /*6th page starts here*/
+        
+        .page-6 {
+            height: 500px;
+            background-image: url(/IMAGES/page6/bg-03.jpg);
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .page6p1,
+        .page6p2,
+        .page6p3,
+        .page6btn {
+            /* border: 2px solid black; */
+            display: flex;
+            justify-content: center;
+            color: white;
+        }
+        
+        .page-6 .page6p1 {
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-size: 18px;
+            font-weight: 450;
+            font-style: normal;
+            letter-spacing: 2px;
+        
+        }
+        
+        .page-6 .page6p2 p .span1 {
+            font-size: 5rem;
+        }
+        
+        .page-6 .page6p2 p .span2 {
+            font-size: 6rem;
+            font-weight: 700;
+            font-family: 'Jost', sans-serif;
+        }
+        
+        .page-6 .page6p2 {
+            font-family: "Vollkorn", serif;
+            font-weight: 400;
+            font-style: normal;
+        
+        
+        }
+        
+        .page-6 .page6p3 {
+            position: relative;
+            top: -50px;
+            font-size: 3.5rem;
+            font-family: "Vollkorn", serif;
+            font-weight: 400;
+            font-style: normal;
+        
+        }
+        
+        .page6btn button {
+            position: relative;
+            top: -50px;
+            padding: 15px 30px 15px;
+            color: aliceblue;
+            background-color: transparent;
+            border: 1px solid white;
+            font-size: 0.9rem;
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            letter-spacing: 2px;
+        }
+        
+        .page6btn button:hover {
+            background-color: white;
+            color: black;
+            transition: 0.7s;
+        }
+        /*6th page ends here*/
+        
+        /*7th page starts here*/
+        
+        .page-7 .page7-main .section1 .page7header p,
+        .h2-1st,
+        .secondh2 {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .page-7 .page7-main .section1 .page7header p {
+            padding-top: 50px;
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            letter-spacing: 2px;
+            color: rgb(104, 100, 100);
+        }
+        
+        .page-7 .page7-main .section1 .h2-1st {
+            font-size: 5rem;
+            opacity: 0.15;
+            font-family: "Alex Brush", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        .page-7 .page7-main .section1 .secondh2 {
+            position: relative;
+            top: -65px;
+            font-family: "Vollkorn", serif;
+            font-weight: 400;
+            font-size: 3.8rem;
+            font-style: normal;
+        }
+        .page-7 .page7-main .container{
+            display: flex;
+            justify-content: center;
+            padding-bottom: 100px;
+        }
+        
+        
+        .page-7 .page7-main .container .section2 .img1 .p1,
+        .page-7 .page7-main .container .section3 .img2 .p1,
+        .page-7 .page7-main .container .section4 .img3 .p1 {
+        
+        
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            letter-spacing: 2px;
+            color: rgb(104, 100, 100);
+            padding-top: 30px;
+        
+        }
+        
+        .page-7 .page7-main .container .section2 .img1 .p2,
+        .page-7 .page7-main .container .section3 .img2 .p2,
+        .page-7 .page7-main .container .section4 .img3 .p2 {
+        
+            font-family: "Vollkorn", serif;
+            font-weight: 400;
+            line-height: 35px;
+            font-size: 1.7rem;
+        
+        }
+        
+        .page-7 .page7-main .container .section2 .img1 .p3,
+        .page-7 .page7-main .container .section3 .img2 .p3,
+        .page-7 .page7-main .container .section4 .img3 .p3 {
+        
+            font-family: "Vollkorn", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-size: 19px;
+            line-height: 30px;
+            color: rgb(104, 100, 100);
+        
+        }
+        .page-7 .page7-main .container .section4{
+            padding-left: 25px;
+        }
+        .page-7 .page7-main .container .section3{
+            padding-left: 25px;
+        }
+        /*7th page ends here*/
+        
+        
+        /*8th page starts here*/
+        
+        .page-8 .container .section1 .page8header p {
+            display: flex;
+            justify-content: center;
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            letter-spacing: 2px;
+            color: rgb(104, 100, 100);
+        }
+        .page-8 .container .section1 .h2-page8 {
+            display: flex;
+            justify-content: center;
+            font-family: "Vollkorn", serif;
+            font-weight: 400;
+            font-size: 3.7rem;
+            font-style: normal;
+            padding-top: 10px;
+        }
+        .page-8 .container .section1 {
+            padding-bottom: 50px;
+        }
+        .page-8 .container .section2{
+            display: flex;
+            justify-content: space-between;
+        }
+        .page-8 .container .section2 .img1 h5,
+        .page-8 .container .section2 .img2 h5 {
+            font-family: "Vollkorn", serif;
+            font-style: normal;
+            padding-top: 50px;
+            display: flex;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 2rem;
+        }
+        .page-8 .container{
+            padding-bottom: 50px;
+        }
+        /*8th page ends here*/
+        
+        
+        /*9th page starts here*/
+        
+        .page-9 .container{
+            display: flex;
+            justify-content: center;
+            justify-content: space-between;
+        }
+        
+        .page-9 .container .section3 button{
+            padding: 20px 40px 20px;
+            color: aliceblue;
+            background-color: black;
+            border: #000;
+            font-size: 0.9rem;
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            letter-spacing: 2px;
+        }
+        .page-9  .section3 input{
+        
+            padding: 15px 20px 20px;
+            color: rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
+            font-size: 1rem;
+            border: 1px solid rgb(160, 160, 160);
+        }
+        
+        
+        .page-9 .container .section3 button:hover {
+            background-color: white;
+            color: black;
+            transition: 0.7s;
+            border: 1px solid black;
+            overflow: hidden;
+        }
+        
+        .page-9 .container .section1 h2,
+        .page-9 .container .section2 h2,
+        .page-9 .container .section3 h2 {
+        
+            font-family: "Vollkorn", serif;
+            font-weight: 400;
+            font-style: normal;
+            padding-bottom: 25px;
+        
+        }
+        
+        .page-9 .container .section1 .p1,
+        .p2 {
+            font-family: "Vollkorn", serif;
+            font-style: normal;
+            font-size: 20px;
+            color: rgb(104, 100, 100);
+        }
+        
+        .page-9 .container .section2 .p4,
+        .p5,
+        .p6
+        {
+            font-family: "Vollkorn", serif;
+            font-style: normal;
+            font-size: 20px;
+            padding-right: 20px;
+            color: rgb(104, 100, 100);
+        }
+        .page-9 .container .section2 .p7{
+            
+            font-family: "Vollkorn", serif;
+            font-weight: 600;
+            font-size: 25px;
+            padding-top: 20px;
+           
+        
+        }
+        
+        .page-9 .container .section3 .p8{
+            font-family: "Vollkorn", serif;
+            font-style: normal;
+            font-size: 20px;
+            padding-right: 20px;
+            color: rgb(104, 100, 100);
+        }
+        
+        /*9th page ends here*/
+        
+        /* Footer-Start */
+        
+        
+        footer {
+            display: flex;
+            background-color: black;
+            color: aliceblue;
+            justify-content: center;
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+        /* Footer-End */
+        
+    }
+        
+    .page-6{
+        height: 500px;
+        background-image: url(./bg-03.jpg);
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .page6p1,
+    .page6p2,
+    .page6p3,
+    .page6btn {
+        /* border: 2px solid black; */
+        display: flex;
+        justify-content: center;
+        color: white;
+    }
+    
+    .page-6 .page6p1 {
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-size: 18px;
+        font-weight: 450;
+        font-style: normal;
+        letter-spacing: 2px;
+    
+    }
+    
+    .page-6 .page6p2 p .span1 {
+        font-size: 5rem;
+    }
+        .page-6 .page6p2 p .span1 {
+        font-size: 5rem;
+    }
+    
+    .page-6 .page6p2 p .span2 {
+        font-size: 6rem;
+        font-weight: 700;
+        font-family: 'Jost', sans-serif;
+    }
+    
+    .page-6 .page6p2 {
+        font-family: "Vollkorn", serif;
+        font-weight: 400;
+        font-style: normal;
+    
+    
+    }
+    
+    .page-6 .page6p3 {
+        position: relative;
+        top: -50px;
+        font-size: 3.5rem;
+        font-family: "Vollkorn", serif;
+        font-weight: 400;
+        font-style: normal;
+    
+    }
+    
+    .page6btn button {
+        position: relative;
+        top: -50px;
+        padding: 15px 30px 15px;
+        color: aliceblue;
+        background-color: transparent;
+        border: 1px solid white;
+        font-size: 0.9rem;
+        font-family: "Jost", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 2px;
+    }
+    
+    .page6btn button:hover {
+        background-color: white;
+        color: black;
+        transition: 0.7s;
+    }
+    </style>
 
 
 <body>
@@ -35,6 +1735,9 @@
     <!-- 1st page -->
     <div class="main_photo">
         <header>
+            <div class="login" id="hello">
+                <li><a href="./user_profile.php">YOUR PROFILE</a></li>
+            </div>
             <!-- <div class="logo">
            <span> NIRMALA'S</span> 
            <span class="beauty"> BEAUTY</span> <span class="salon"> SALON</span>        </div> -->
@@ -45,7 +1748,7 @@
                 <li><a href="about.htm">ABOUT US</a></li>
                 <li><a href="contact.htm">CONTACT US</a></li>
             </nav>
-            <div class="login">
+            <div class="login" id="hi">
                 <li><a href="./logout.php">LOGOUT</a></li>
 
             </div>

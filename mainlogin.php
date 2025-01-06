@@ -1,3 +1,17 @@
+<?php
+// Start session if not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+include 'db.php';
+
+// Check if user is logged in
+if (isset($_SESSION['user'])) {
+    header("Location: hellomain.htm");  // Redirect if already logged in
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

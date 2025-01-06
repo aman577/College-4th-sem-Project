@@ -18,7 +18,7 @@
     }
 
     .form-container {
-      width: 400px;
+      width: 450px;
       padding: 30px;
       background: #fff;
       border-radius: 15px;
@@ -40,12 +40,13 @@
     }
 
     input {
+      height: 35px;
       width: 100%;
       padding: 10px;
-      margin-bottom: 15px;
+      margin-bottom: 3px;
       border: 1px solid #ddd;
       border-radius: 8px;
-      font-size: 1rem;
+      font-size: 0.8rem;
       transition: 0.3s;
       box-sizing: border-box;
     }
@@ -109,16 +110,20 @@
     <h2>Signup</h2>
     <form id="signup-form" action="db.php" method="POST">
       <label for="first-name">First Name</label>
-      <input type="text" id="first-name" name="firstname" placeholder="Enter your first name" required>
+      <input type="text" id="first-name" name="first_name" placeholder="Enter your first name" required>
       <div id="first-name-error" class="error-message"></div>
 
       <label for="last-name">Last Name</label>
-      <input type="text" id="last-name" name="lastname" placeholder="Enter your last name" required>
+      <input type="text" id="last-name" name="last_name" placeholder="Enter your last name" required>
       <div id="last-name-error" class="error-message"></div>
 
       <label for="signup-email">Email</label>
       <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
       <div id="signup-email-error" class="error-message"></div>
+
+      <label for="phone">Phone</label>
+      <input type="text" id="phone" name="phone" placeholder="Enter your Phone Number" required>
+      <div id="phone-error" class="error-message"></div>
 
       <label for="signup-password">Password</label>
       <input type="password" id="signup-password" name="password" placeholder="Enter your password" required>
@@ -141,11 +146,28 @@
     const namePattern = /^[A-Za-z]+$/;
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
-
-    // First Name Validation
+    const phonePattern = /^(98|97|96)[0-9]{8}$/; // Phone number must start with 98, 97, or 96 and have 10 digits.
+  
+    // Get form fields
     const firstName = document.getElementById("first-name");
     const firstNameError = document.getElementById("first-name-error");
-
+  
+    const lastName = document.getElementById("last-name");
+    const lastNameError = document.getElementById("last-name-error");
+  
+    const email = document.getElementById("signup-email");
+    const emailError = document.getElementById("signup-email-error");
+  
+    const phone = document.getElementById("phone");
+    const phoneError = document.getElementById("phone-error");
+  
+    const password = document.getElementById("signup-password");
+    const passwordError = document.getElementById("signup-password-error");
+  
+    const confirmPassword = document.getElementById("confirm-password");
+    const confirmPasswordError = document.getElementById("confirm-password-error");
+  
+    // Real-time validation for First Name
     firstName.addEventListener("input", () => {
       if (namePattern.test(firstName.value)) {
         firstNameError.textContent = "";
@@ -153,11 +175,8 @@
         firstNameError.textContent = "First name must only contain letters.";
       }
     });
-
-    // Last Name Validation
-    const lastName = document.getElementById("last-name");
-    const lastNameError = document.getElementById("last-name-error");
-
+  
+    // Real-time validation for Last Name
     lastName.addEventListener("input", () => {
       if (namePattern.test(lastName.value)) {
         lastNameError.textContent = "";
@@ -165,11 +184,8 @@
         lastNameError.textContent = "Last name must only contain letters.";
       }
     });
-
-    // Email Validation
-    const email = document.getElementById("signup-email");
-    const emailError = document.getElementById("signup-email-error");
-
+  
+    // Real-time validation for Email
     email.addEventListener("input", () => {
       if (emailPattern.test(email.value)) {
         emailError.textContent = "";
@@ -177,11 +193,17 @@
         emailError.textContent = "Please enter a valid email address.";
       }
     });
-
-    // Password Validation
-    const password = document.getElementById("signup-password");
-    const passwordError = document.getElementById("signup-password-error");
-
+  
+    // Real-time validation for Phone
+    phone.addEventListener("input", () => {
+      if (phonePattern.test(phone.value)) {
+        phoneError.textContent = "";
+      } else {
+        phoneError.textContent = "Phone number must start with 98, 97, or 96 and of 10 digits.";
+      }
+    });
+  
+    // Real-time validation for Password
     password.addEventListener("input", () => {
       if (passwordPattern.test(password.value)) {
         passwordError.textContent = "";
@@ -189,11 +211,8 @@
         passwordError.textContent = "Password must have at least 8 characters, including uppercase, lowercase, numbers, and special characters.";
       }
     });
-
-    // Confirm Password Validation
-    const confirmPassword = document.getElementById("confirm-password");
-    const confirmPasswordError = document.getElementById("confirm-password-error");
-
+  
+    // Real-time validation for Confirm Password
     confirmPassword.addEventListener("input", () => {
       if (confirmPassword.value === password.value) {
         confirmPasswordError.textContent = "";
@@ -201,6 +220,50 @@
         confirmPasswordError.textContent = "Passwords do not match.";
       }
     });
+  
+    // Handle form submission
+    const form = document.getElementById("signup-form");
+    form.addEventListener("submit", (event) => {
+      // Prevent the form from submitting if there are validation errors
+      let isValid = true;
+  
+      // Check all fields for validation errors
+      if (!namePattern.test(firstName.value)) {
+        firstNameError.textContent = "First name must only contain letters.";
+        isValid = false;
+      }
+      if (!namePattern.test(lastName.value)) {
+        lastNameError.textContent = "Last name must only contain letters.";
+        isValid = false;
+      }
+      if (!emailPattern.test(email.value)) {
+        emailError.textContent = "Please enter a valid email address.";
+        isValid = false;
+      }
+      if (!phonePattern.test(phone.value)) {
+        phoneError.textContent = "Phone number must start with 98, 97, or 96 and be followed by 8 digits.";
+        isValid = false;
+      }
+      if (!passwordPattern.test(password.value)) {
+        passwordError.textContent = "Password must have at least 8 characters, including uppercase, lowercase, numbers, and special characters.";
+        isValid = false;
+      }
+      if (confirmPassword.value !== password.value) {
+        confirmPasswordError.textContent = "Passwords do not match.";
+        isValid = false;
+      }
+  
+      // If valid, allow form submission and redirect
+      if (isValid) {
+  
+        window.location.href = "mainlogin.php"; // Redirect to login page after successful signup
+      } else {
+        event.preventDefault(); // Prevent form submission if there are errors
+      }
+    });
   </script>
+  
+  
 </body>
+</html>
 </html>

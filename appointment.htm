@@ -16,6 +16,13 @@
             background-color: #f8f5f2;
             color: #333;
         }
+        .error-message {
+        color: red;
+        font-size: 0.9rem;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        display: block;
+    }
 
         header {
             background-color: #4c3a51;
@@ -115,16 +122,19 @@
     <!-- Appointment Booking Section -->
     <div class="appointment-section" id="appointment">
         <h2>Book an Appointment</h2>
-        <form action="appointment.php" method="POST" class="appointment-form">
+        <form action="appointment.php" method="POST" class="appointment-form" id="appointmentForm">
             <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required placeholder="Enter your full name">
-
+            <input type="text" id="name" name="name" placeholder="Enter your full name" oninput="validateName()">
+            <span id="nameError" class="error-message"></span>
+        
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required placeholder="Enter your email">
-
+            <input type="email" id="email" name="email" placeholder="Enter your email" oninput="validateEmail()">
+            <span id="emailError" class="error-message"></span>
+        
             <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
-
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" oninput="validatePhone()">
+            <span id="phoneError" class="error-message"></span>
+        
             <label for="service">Select Service:</label>
             <select id="service" name="service" required>
                 <option value="facial">Facial</option>
@@ -134,16 +144,82 @@
                 <option value="nails">Nails</option>
                 <option value="makeup">Make-up</option>
             </select>
-
+        
             <label for="date">Preferred Date:</label>
-            <input type="date" id="date" name="date" required>
-
+            <input type="date" id="date" name="date" min="2025-01-04" onchange="validateDate()">
+            <span id="dateError" class="error-message"></span>
+        
             <label for="time">Preferred Time:</label>
             <input type="time" id="time" name="time" required>
-
+        
             <button type="submit">Submit</button>
         </form>
+        
     </div>
+    <script>
+        // Real-time validation functions
+    
+        function validateName() {
+            const nameField = document.getElementById("name");
+            const nameError = document.getElementById("nameError");
+            const name = nameField.value.trim();
+    
+            if (!/^[A-Za-z\s]+$/.test(name)) {
+                nameError.textContent = "Name can only contain letters and spaces.";
+                nameField.style.borderColor = "red";
+            } else {
+                nameError.textContent = "";
+                nameField.style.borderColor = "green";
+            }
+        }
+    
+        function validateEmail() {
+            const emailField = document.getElementById("email");
+            const emailError = document.getElementById("emailError");
+            const email = emailField.value.trim();
+    
+            if (!/^\S+@\S+\.\S+$/.test(email)) {
+                emailError.textContent = "Please enter a valid email address.";
+                emailField.style.borderColor = "red";
+            } else {
+                emailError.textContent = "";
+                emailField.style.borderColor = "green";
+            }
+        }
+    
+        function validatePhone() {
+            const phoneField = document.getElementById("phone");
+            const phoneError = document.getElementById("phoneError");
+            const phone = phoneField.value.trim();
+    
+            if (!/^(98|97|96)\d{8}$/.test(phone)) {
+                phoneError.textContent = "Enter 10 digit numbers(starts with 98, 97, or 96).";
+                phoneField.style.borderColor = "red";
+            } else {
+                phoneError.textContent = "";
+                phoneField.style.borderColor = "green";
+            }
+        }
+    
+        function validateDate() {
+            const dateField = document.getElementById("date");
+            const dateError = document.getElementById("dateError");
+            const date = dateField.value;
+            const today = new Date().toISOString().split("T")[0];
+    
+            if (date < today) {
+                dateError.textContent = "Date cannot be in the past.";
+                dateField.style.borderColor = "red";
+            } else {
+                dateError.textContent = "";
+                dateField.style.borderColor = "green";
+            }
+        }
+    
+        // Add event listeners for other fields if needed
+    </script>
+    
+    
 </body>
 
 </html>

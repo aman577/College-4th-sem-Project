@@ -1,35 +1,49 @@
 <?php
-session_start();
-include 'connect.php';
-if (isset($_POST['signUp'])){
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "project";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if the form is submitted for registration
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signUp'])) {
+    // Get form data
+    $firstName = $_POST['first_name'];
+    $lastName = $_POST['last_name'];
     $email = $_POST['email'];
+    $phone = $_POST['phone'];
     $password = $_POST['password'];
-    $confirmpassword = $_POST['confirmpassword'];
 
-    //email exist or not
+    // Check if the email is already registered
+    $sql_check_email = "SELECT * FROM users WHERE email = '$email'";
+    $result = $conn->query($sql_check_email);
 
-    $check_email_query = "SELECT email FROM users WHERE email='$email' LIMIT 1";
-    $check_email_query_run =mysqli_query($con, $check_email_query );
+    if ($result->num_rows > 0) {
+        // Email already exists
+        echo "Email is already registered. Please login.";
+    } else {
+        // Insert new user data into the database
+        $sql = "INSERT INTO users (first_name, last_name, email, phone, password) 
+                VALUES ('$firstName', '$lastName', '$email', '$phone', '$password')";
 
-    if(mysqli_num_rows($check_email_query_run)> 0){
-        $_SESSION['status']= "Email is already exists";
-        header("Location: mainlogin.php");
-}
-else{
-    $query = "INSERT INTO users (first_name,last_name,email,password) VALUES ('$firstname','$lastname','$email','$password')";
-    $query_run = mysqli_query(  $con, $query );
-
-    if($query_run) {
-        $_SESSION['status']="Registraton Successful.!";
-        header("location: mainlogin.php");
+        if ($conn->query($sql) === TRUE) {
+            echo "New user registered successfully!";
+            // Redirect to the login page after successful registration
+            header("Location: mainlogin.php");
+            exit();
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
-    else{
-        $_SESSION['status']= 'Registration Failed';
-        header('Location: mainlogin.php');
-    }
+}
 
-}
-}
+$conn->close();
 ?>
