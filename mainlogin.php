@@ -22,7 +22,7 @@ if (isset($_SESSION['user'])) {
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom right, #ffe4e1, #ff91a4);
+      background: linear-gradient(to bottom right,rgb(134, 106, 103),rgb(157, 175, 240));
       margin: 0;
       padding: 0;
       display: flex;
@@ -40,7 +40,7 @@ if (isset($_SESSION['user'])) {
     }
 
     .form-container {
-      width: 350px;
+      width: 300px;
       padding: 20px 25px;
       background: #fff;
       border-radius: 15px;
@@ -50,7 +50,7 @@ if (isset($_SESSION['user'])) {
 
     .form-container h2 {
       margin-bottom: 15px;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       color: #ff4081;
     }
 
@@ -67,7 +67,7 @@ if (isset($_SESSION['user'])) {
       margin-bottom: 15px;
       border: 1px solid #ddd;
       border-radius: 8px;
-      font-size: 1rem;
+      font-size: 0.9rem;
       transition: 0.3s;
       box-sizing: border-box;
     }

@@ -149,9 +149,9 @@
             <input type="date" id="date" name="date" min="2025-01-04" onchange="validateDate()">
             <span id="dateError" class="error-message"></span>
         
-            <label for="time">Preferred Time:</label>
-            <input type="time" id="time" name="time" required>
-        
+            <label for="time">Preferred Time: 8AM to 8PM</label>
+            <input type="time" id="time" name="time" required min="08:00" max="20:00">
+            
             <button type="submit">Submit</button>
         </form>
         
