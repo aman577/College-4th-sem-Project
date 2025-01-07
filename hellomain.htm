@@ -1252,8 +1252,12 @@
                 <p class="p8">
                     Subscribe our mailing list and be the first to know <br>about special deals!
                 </p>
-                <input type="email" placeholder="Leasve us comment">
-                <button>Your's Comment</button>
+                <form action="submit_comment.php" method="POST">
+                    <input type="email" name="user_email" placeholder="your email" required>
+                    <input name="comment" placeholder="Your Comment" required></input>
+                    <button type="submit">Submit Comment</button>
+                </form>
+                
             </div>
 
         </div>

@@ -26,6 +26,11 @@ $resultMemberships = $conn->query($sqlMemberships);
 $sqlMessages = "SELECT id, name, email, message FROM messages ORDER BY id DESC";
 $resultMessages = $conn->query($sqlMessages);
 
+// Fetch comments (new addition)
+$sqlComments = "SELECT id, user_email, comment, created_at FROM comments ORDER BY created_at DESC";
+$resultComments = $conn->query($sqlComments);
+?>
+
 ?>
 
 <!DOCTYPE html>
@@ -249,6 +254,42 @@ $resultMessages = $conn->query($sqlMessages);
     </table>
 </div>
 
+<div class="container">
+        <h2>Manage Comments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User Email</th>
+                    <th>Comment</th>
+                    <th>Posted On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($resultComments && $resultComments->num_rows > 0): ?>
+                    <?php while ($row = $resultComments->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['id']); ?></td>
+                            <td><?php echo htmlspecialchars($row['user_email']); ?></td>
+                            <td><?php echo htmlspecialchars($row['comment']); ?></td>
+                            <td><?php echo htmlspecialchars($row['created_at']); ?></td>
+                            <td>
+                                <form action="comment_delete.php" method="POST" style="display:inline;">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5">No comments found</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
 
     <footer>
         &copy; <?php echo date("Y"); ?> Admin Panel, Nirmala's Beauty Parlor. All rights reserved.
