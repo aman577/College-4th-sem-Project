@@ -1,37 +1,35 @@
 <?php
-// Start session
+// Start session if not already started
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
 // Database connection
-$conn = new mysqli('localhost', 'root', '', 'project');
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get the form data
     $email = $_POST['email'];
     $phone = $_POST['phone'];
 
-    // Assuming user ID is stored in session as an integer
-    if (isset($_SESSION['user']['id'])) {
-        $userId = $_SESSION['user']['id'];
-
-        // Update query to set new email and phone based on user ID
-        $sql = "UPDATE users SET email = ?, phone = ? WHERE id = ?";
+    // Check if user is logged in (session contains user data)
+    if (isset($_SESSION['user']['email'])) {
+        $currentEmail = $_SESSION['user']['email'];  // Get the email from session
+        
+        // Update query to set new email and phone based on the current logged-in email
+        $sql = "UPDATE users SET email = ?, phone = ? WHERE email = ?";
         $stmt = $conn->prepare($sql);
 
-        // Bind parameters (s for string and i for integer)
-        $stmt->bind_param('ssi', $email, $phone, $userId);
+        // Bind parameters (s for string)
+        $stmt->bind_param('sss', $email, $phone, $currentEmail);
 
         // Execute the query
         if ($stmt->execute()) {
-            // Update session data
+            // Update session data to reflect the new email and phone
             $_SESSION['user']['email'] = $email;
             $_SESSION['user']['phone'] = $phone;
+
+            // Send a success message back to the front end
             echo "Profile updated successfully.";
         } else {
             echo "Error: " . $conn->error;
@@ -41,7 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "User is not logged in.";
     }
-
-    $conn->close();
 }
+
+// Close connection
+$conn->close();
 ?>

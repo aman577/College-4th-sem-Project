@@ -272,46 +272,40 @@ $user = $_SESSION['user'];
 
         // Save changes after validation
         saveBtn.addEventListener('click', () => {
-            const email = emailInput.value;
-            const phone = phoneInput.value;
+    const email = emailInput.value;
+    const phone = phoneInput.value;
 
-            // Validate email and phone before submitting
-            if (!emailPattern.test(email)) {
-                alert("Please enter a valid email address.");
-                return;
-            }
+    // Validate email and phone before submitting
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
 
-            if (!phonePattern.test(phone)) {
-                alert("Phone number must start with 98, 97, or 96 and have 10 digits.");
-                return;
-            }
+    if (!phonePattern.test(phone)) {
+        alert("Phone number must start with 98, 97, or 96 and have 10 digits.");
+        return;
+    }
 
-            // Proceed with updating the profile
-            fetch('update_profile.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`,
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert(data);  // Show server response
-                emailDisplay.textContent = email;
-                phoneDisplay.textContent = phone;
-                modal.style.display = 'none';  // Close modal after saving changes
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
+    // Proceed with updating the profile
+    fetch('update_profile.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data);  // Show server response
+        emailDisplay.textContent = email;
+        phoneDisplay.textContent = phone;
+        modal.style.display = 'none';  // Close modal after saving changes
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
 
-        // Close modal when clicking outside the modal content
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
     </script>
 </body>
 </html>
