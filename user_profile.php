@@ -195,6 +195,8 @@ $user = $_SESSION['user'];
         <h1>Welcome, <?php echo htmlspecialchars($user['first_name']); ?></h1>
         <p>Your Email: <span id="email-display"><?php echo htmlspecialchars($user['email']); ?></span></p>
         <p>Your Phone: <span id="phone-display"><?php echo isset($user['phone']) ? htmlspecialchars($user['phone']) : 'N/A'; ?></span></p>
+        <p>Your Appointment: <span id="appointment-display"><?php echo isset($user['apppointmentForm']) ? htmlspecialchars($user['appointmentForm']) : 'N/A'; ?></span></p>
+        <p>Your Membership: <span id="membership-display"><?php echo isset($user['membership']) ? htmlspecialchars($user['membership']) : 'N/A'; ?></span></p>
         <button id="edit-btn">Edit</button>
     </div>
 
