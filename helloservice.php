@@ -164,7 +164,7 @@
   <body>
     <header>
       <nav>
-        <a href="hello.htm">HOME</a>
+        <a href="hello.php">HOME</a>
         <a href="hellomenu.php">MENU</a>
         <a href="#active">OUR SERVICES</a>
         <a href="helloabout.php">ABOUT US</a>
