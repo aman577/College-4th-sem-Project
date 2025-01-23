@@ -9,12 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "DELETE FROM appointments WHERE id = $id";
+    // Update the status of the appointment instead of deleting it
+    $sql = "UPDATE appointments SET status = 'Deleted' WHERE id = $id";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Appointment deleted successfully.";
+        echo "Appointment marked as deleted successfully.";
     } else {
-        echo "Error deleting appointment: " . $conn->error;
+        echo "Error updating appointment: " . $conn->error;
     }
 
     $conn->close();

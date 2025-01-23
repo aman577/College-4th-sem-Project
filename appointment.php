@@ -27,7 +27,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    echo "Time slot is already booked. Please choose another time.";
+    echo "<script>alert('Time slot is already booked. Please choose another time.');</script>";
+    echo "<script>window.location.href = 'appointment.htm';</script>"; // Redirect after alert
 } else {
     // Insert the appointment
     $sql = "INSERT INTO appointments (name, email, phone, service, date, time) VALUES (?, ?, ?, ?, ?, ?)";
@@ -35,7 +36,8 @@ if ($result->num_rows > 0) {
     $stmt->bind_param("ssssss", $name, $email, $phone, $service, $date, $time);
     
     if ($stmt->execute()) {
-        echo "Appointment booked successfully!";
+        echo "<script>alert('Appointment booked successfully!');</script>";
+        echo "<script>window.location.href = 'appointment.htm';</script>"; // Redirect after success
     } else {
         echo "Error: " . $stmt->error;
     }

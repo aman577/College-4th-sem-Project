@@ -15,8 +15,12 @@ if ($conn->connect_error) {
 }
 
 // Fetch appointments
-$sqlAppointments = "SELECT id, name, email, phone, service, date, time FROM appointments ORDER BY date, time";
+$sqlAppointments = "SELECT id, name, email, phone, service, date, time, status FROM appointments ORDER BY date, time";
 $resultAppointments = $conn->query($sqlAppointments);
+
+$sql = "SELECT * FROM appointments WHERE status != 'Deleted'";
+$resultAppointments = $conn->query($sql);
+
 
 // Fetch memberships
 $sqlMemberships = "SELECT id, name, email, phone, plan, registration_date FROM memberships ORDER BY registration_date DESC";
@@ -29,8 +33,6 @@ $resultMessages = $conn->query($sqlMessages);
 // Fetch comments (new addition)
 $sqlComments = "SELECT id, user_email, comment, created_at FROM comments ORDER BY created_at DESC";
 $resultComments = $conn->query($sqlComments);
-?>
-
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +83,8 @@ $resultComments = $conn->query($sqlComments);
             margin-top: 20px;
         }
 
-        table th, table td {
+        table th,
+        table td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: center;
@@ -145,6 +148,7 @@ $resultComments = $conn->query($sqlComments);
                     <th>Date</th>
                     <th>Time</th>
                     <th>Actions</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -159,21 +163,39 @@ $resultComments = $conn->query($sqlComments);
                             <td><?php echo htmlspecialchars($row['date']); ?></td>
                             <td><?php echo htmlspecialchars($row['time']); ?></td>
                             <td>
-                                <form action="delete_appointment.php" method="POST" style="display:inline;">
+                                <form action="delete_appointment.php" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
                                     <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
                                     <button type="submit">Delete</button>
                                 </form>
+
+                                <!-- Verify Button with a form -->
+                                <form action="verify_appointment.php" method="POST" style="display:inline;">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                    <input type="hidden" name="action" value="verified">
+                                    <button type="submit" class="status-btn verify-btn">Verify</button>
+                                </form>
+
                             </td>
+
+                            <td><?php echo htmlspecialchars($row['status']); ?></td>
                         </tr>
                     <?php endwhile; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="8">No appointments found</td>
+                        <td colspan="9">No appointments found</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
         </table>
     </div>
+
+    <script>
+        // Confirmation function for delete action
+        function confirmDelete() {
+            return confirm('Are you sure you want to delete this appointment?');
+        }
+    </script>
+
 
     <div class="container">
         <h2>Manage Memberships</h2>
@@ -217,44 +239,44 @@ $resultComments = $conn->query($sqlComments);
         </table>
     </div>
     <div class="container">
-    <h2>Manage Messages</h2>
+        <h2>Manage Messages</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Message</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if ($resultMessages && $resultMessages->num_rows > 0): ?>
-                <?php while ($row = $resultMessages->fetch_assoc()): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($row['id']); ?></td>
-                        <td><?php echo htmlspecialchars($row['name']); ?></td>
-                        <td><?php echo htmlspecialchars($row['email']); ?></td>
-                        <td><?php echo htmlspecialchars($row['message']); ?></td>
-                        <td>
-                            <form action="contact_delete.php" method="POST" style="display:inline;">
-                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                <button type="submit">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
-            <?php else: ?>
+        <table>
+            <thead>
                 <tr>
-                    <td colspan="5">No messages found</td>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Actions</th>
                 </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                <?php if ($resultMessages && $resultMessages->num_rows > 0): ?>
+                    <?php while ($row = $resultMessages->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['id']); ?></td>
+                            <td><?php echo htmlspecialchars($row['name']); ?></td>
+                            <td><?php echo htmlspecialchars($row['email']); ?></td>
+                            <td><?php echo htmlspecialchars($row['message']); ?></td>
+                            <td>
+                                <form action="contact_delete.php" method="POST" style="display:inline;">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5">No messages found</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
 
-<div class="container">
+    <div class="container">
         <h2>Manage Comments</h2>
         <table>
             <thead>
@@ -295,6 +317,13 @@ $resultComments = $conn->query($sqlComments);
         &copy; <?php echo date("Y"); ?> Admin Panel, Nirmala's Beauty Parlor. All rights reserved.
     </footer>
 </body>
+
+<script>
+    function confirmDelete() {
+        return confirm('Are you sure you want to delete this appointment?');
+    }     
+</script>
+
 
 </html>
 

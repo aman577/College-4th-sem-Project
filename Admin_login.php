@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parlor User Login</title>
+  <title>Admin Login</title>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom right,rgb(134, 106, 103),rgb(157, 175, 240));
+      background: linear-gradient(to bottom right, rgb(157, 175, 240), rgb(134, 106, 103));
       margin: 0;
       padding: 0;
       display: flex;
@@ -90,21 +90,18 @@
 </head>
 <body>
   <div class="main-container">
-    <h2>User Login</h2>
-    <form id="user-login-form" action="main.php" method="POST">
-      <label for="user-email">Email</label>
-      <input type="email" id="user-email" name="email" placeholder="Enter your email" required>
+    <h2>Admin Login</h2>
+    <form id="admin-login-form" action="admin_Login_Process.php" method="POST">
+      <label for="admin-username">Username</label>
+      <input type="text" id="admin-username" name="username" placeholder="Enter your username" required>
 
-      <label for="user-password">Password</label>
-      <input type="password" id="user-password" name="password" placeholder="Enter your password" required>
+      <label for="admin-password">Password</label>
+      <input type="password" id="admin-password" name="password" placeholder="Enter your password" required>
 
-      <button type="submit" name="login">Login</button>
+      <button type="submit" name="admin-login">Login</button>
     </form>
     <div class="switch-link">
-      Don't have an account? <a href="user_register.htm">Sign up</a>
-    </div>
-    <div class="switch-link">
-      Are you an admin? <a href="admin_login.php">Admin Login</a>
+      Back to <a href="mainlogin.php">User Login</a>
     </div>
   </div>
 </body>
