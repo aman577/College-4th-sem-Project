@@ -1119,25 +1119,24 @@
     <!-- 5th page ends here-->
 
     <!-- 6th page starts here-->
-
     <div class="page-6">
 
-        <div class="page6p1">
-            <p>THIS WEEK ONLY</p>
-        </div>
-        <div class="page6p2">
-            <p> <span class="span1">Get </span> <span class="span2">30% OFF</span></p>
-        </div>
-        <div class="page6p3">
-            <p>Quick Face Makeup</p>
-        </div>
+<div class="page6p1">
+    <p>ON 1st MEMBERSHIP WEEK </p>
+</div>
+<div class="page6p2">
+    <p> <span class="span1">Get </span> <span class="span2">30% OFF</span></p>
+</div>
+<div class="page6p3">
+    <p>Quick Face Makeup</p>
+</div>
 
-        <div class="page6btn">
-            <button  id="book-button" onclick="window.location.href='mainlogin.php';"> BOOK AN APOINTMENT</button>
-        </div>
+<div class="page6btn">
+    <button id="book-button" onclick="window.location.href='appointment.htm';">BOOK AN APPOINTMENT</button>
+</div>
 
 
-    </div>
+</div>
     <!-- 6th page ends here-->
 
     <!-- 7th page starts here-->
@@ -1232,18 +1231,16 @@
             <h2>Get in Touch</h2>
             <p class="p1">
                 Baneshwor, <br>
-                Eyeplex ko Gully
+                Eyeplex, Gully
             </p>
             <p class="p2">
                 phone: 9800000000 <br>
-                Nirmala@gmail.com
+                XYZ@gmail.com
             </p>
         </div>
         <div class="section2">
             <h2>Working Hours</h2>
-            <p class="p4"> Mon-Fri: 10:00AM - 9:00PM</p>
-            <p class="p5">Saturday: 10:00AM - 7:00PM</p>
-            <p class="p6">Sunday: 10:00PM - 7:00PM</p>
+            <p class="p4"> Sun-Sat: 08:00AM - 08:00PM</p>
             <p class="p7">BOOK A SERVICE</p>
         </div>
         <div class="section3">
@@ -1262,7 +1259,7 @@
     <!-- yo footer ho -->
     <footer>
         <div class="footerp">
-            <p> &copy; Nirmala's. All Rights Reserve</p>
+            <p> &copy; XYZ. All Rights Reserve</p>
         </div>
         <!-- <li style="list-style: none; "><a href="./logout.php" style="color: white; text-decoration: none;">LOGOUT</a></li> -->
 
