@@ -1,46 +1,42 @@
 <?php
-// Start session if not already started
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+// Start session and check if the user is logged in
+session_start();
+if (!isset($_SESSION['user'])) {
+    echo "You must be logged in to update your profile.";
+    exit();
 }
 
-// Database connection
+// Get the updated values
+$email = $_POST['email'] ?? '';
+$phone = $_POST['phone'] ?? '';
+
+// Validate email and phone
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "Invalid email format.";
+    exit();
+}
+
+$phone_pattern = "/^(98|97|96)[0-9]{8}$/";
+if (!preg_match($phone_pattern, $phone)) {
+    echo "Invalid phone number.";
+    exit();
+}
+
+// Update user details in the database
 include 'db.php';
+$user_id = $_SESSION['user']['id']; // Assuming 'id' is in the session data
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get the form data
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
+// Prepare update query
+$update_query = "UPDATE users SET email = ?, phone = ? WHERE id = ?";
+$stmt = $conn->prepare($update_query);
+$stmt->bind_param("ssi", $email, $phone, $user_id);
 
-    // Check if user is logged in (session contains user data)
-    if (isset($_SESSION['user']['email'])) {
-        $currentEmail = $_SESSION['user']['email'];  // Get the email from session
-        
-        // Update query to set new email and phone based on the current logged-in email
-        $sql = "UPDATE users SET email = ?, phone = ? WHERE email = ?";
-        $stmt = $conn->prepare($sql);
-
-        // Bind parameters (s for string)
-        $stmt->bind_param('sss', $email, $phone, $currentEmail);
-
-        // Execute the query
-        if ($stmt->execute()) {
-            // Update session data to reflect the new email and phone
-            $_SESSION['user']['email'] = $email;
-            $_SESSION['user']['phone'] = $phone;
-
-            // Send a success message back to the front end
-            echo "Profile updated successfully.";
-        } else {
-            echo "Error: " . $conn->error;
-        }
-
-        $stmt->close();
-    } else {
-        echo "User is not logged in.";
-    }
+if ($stmt->execute()) {
+    // Update the session with new values
+    $_SESSION['user']['email'] = $email;
+    $_SESSION['user']['phone'] = $phone;
+    echo "Profile updated successfully!";
+} else {
+    echo "Error updating profile.";
 }
-
-// Close connection
-$conn->close();
 ?>

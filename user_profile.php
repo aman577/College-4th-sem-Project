@@ -1,16 +1,30 @@
 <?php
-// Start session if not already started
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
 // Check if user is logged in
 if (!isset($_SESSION['user'])) {
-    header("Location: mainlogin.php");  // Redirect to login page if not logged in
+    header("Location: mainlogin.php");  
     exit();
 }
 
 $user = $_SESSION['user'];
+include 'db.php'; 
+
+$user_email = $user['email'];
+
+$appointments_query = "SELECT * FROM appointments WHERE email = ?";
+$stmt = $conn->prepare($appointments_query);
+$stmt->bind_param("s", $user_email); 
+$stmt->execute();
+$appointments_result = $stmt->get_result();
+
+$appointments = [];
+while ($appointment = $appointments_result->fetch_assoc()) {
+    $appointments[] = $appointment;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -192,13 +206,28 @@ $user = $_SESSION['user'];
     </header>
 
     <div class="profile-container">
-        <h1>Welcome, <?php echo htmlspecialchars($user['first_name']); ?></h1>
-        <p>Your Email: <span id="email-display"><?php echo htmlspecialchars($user['email']); ?></span></p>
-        <p>Your Phone: <span id="phone-display"><?php echo isset($user['phone']) ? htmlspecialchars($user['phone']) : 'N/A'; ?></span></p>
-        <p>Your Appointment: <span id="appointment-display"><?php echo isset($user['apppointmentForm']) ? htmlspecialchars($user['appointmentForm']) : 'N/A'; ?></span></p>
-        <p>Your Membership: <span id="membership-display"><?php echo isset($user['membership']) ? htmlspecialchars($user['membership']) : 'N/A'; ?></span></p>
-        <button id="edit-btn">Edit</button>
-    </div>
+    <h1>Welcome, <?php echo htmlspecialchars($user['first_name']); ?></h1>
+    <p>Your Email: <span id="email-display"><?php echo htmlspecialchars($user['email']); ?></span></p>
+    <p>Your Phone: <span id="phone-display"><?php echo isset($user['phone']) ? htmlspecialchars($user['phone']) : 'N/A'; ?></span></p>
+
+    <!-- Display Appointment Details -->
+    <?php if (!empty($appointments)): ?>
+        <p>Your Appointments:</p>
+        <ul>
+            <?php foreach ($appointments as $appointment): ?>
+                    <strong>Service:</strong> <?php echo htmlspecialchars($appointment['service']); ?><br>
+                    <strong>Date:</strong> <?php echo htmlspecialchars($appointment['date']); ?><br>
+                    <strong>Time:</strong> <?php echo htmlspecialchars($appointment['time']); ?><br>
+                    <strong>Status:</strong> <?php echo htmlspecialchars($appointment['status']); ?><br>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>You don't have any appointments booked.</p>
+    <?php endif; ?>
+    
+    <button id="edit-btn">Edit</button>
+</div>
+
 
     <!-- Modal -->
     <div class="modal" id="modal">
