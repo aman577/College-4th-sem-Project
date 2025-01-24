@@ -1,13 +1,10 @@
 <?php
-// Start session and include database connection
 session_start();
 include 'db.php';
 
-// Get the appointment ID from the POST request
 if (isset($_POST['id'])) {
     $appointmentId = $_POST['id'];
 
-    // Fetch appointment details from the database
     $query = "SELECT * FROM appointments WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $appointmentId);

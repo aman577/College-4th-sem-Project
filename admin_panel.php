@@ -135,66 +135,64 @@ $resultComments = $conn->query($sqlComments);
     </header>
 
     <div class="container">
-        <h2>Manage Appointments</h2>
+    <h2>Manage Appointments</h2>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Service</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Actions</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if ($resultAppointments && $resultAppointments->num_rows > 0): ?>
-                    <?php while ($row = $resultAppointments->fetch_assoc()): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($row['id']); ?></td>
-                            <td><?php echo htmlspecialchars($row['name']); ?></td>
-                            <td><?php echo htmlspecialchars($row['email']); ?></td>
-                            <td><?php echo htmlspecialchars($row['phone']); ?></td>
-                            <td><?php echo htmlspecialchars($row['service']); ?></td>
-                            <td><?php echo htmlspecialchars($row['date']); ?></td>
-                            <td><?php echo htmlspecialchars($row['time']); ?></td>
-                            <td>
-                                <form action="delete_appointment.php" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
-                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                    <button type="submit">Delete</button>
-                                </form>
-
-                                <!-- Verify Button with a form -->
-                                <form action="verify_appointment.php" method="POST" style="display:inline;">
-                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                    <input type="hidden" name="action" value="verified">
-                                    <button type="submit" class="status-btn verify-btn">Verify</button>
-                                </form>
-
-                            </td>
-
-                            <td><?php echo htmlspecialchars($row['status']); ?></td>
-                        </tr>
-                    <?php endwhile; ?>
-                <?php else: ?>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if ($resultAppointments && $resultAppointments->num_rows > 0): ?>
+                <?php while ($row = $resultAppointments->fetch_assoc()): ?>
                     <tr>
-                        <td colspan="9">No appointments found</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
-    </div>
+                        <td><?php echo htmlspecialchars($row['id']); ?></td>
+                        <td><?php echo htmlspecialchars($row['name']); ?></td>
+                        <td><?php echo htmlspecialchars($row['email']); ?></td>
+                        <td><?php echo htmlspecialchars($row['phone']); ?></td>
+                        <td><?php echo htmlspecialchars($row['service']); ?></td>
+                        <td><?php echo htmlspecialchars($row['date']); ?></td>
+                        <td><?php echo htmlspecialchars($row['time']); ?></td>
+                        <td>
+                            <form action="delete_appointment.php" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                <button type="submit">Delete</button>
+                            </form>
 
-    <script>
-        // Confirmation function for delete action
-        function confirmDelete() {
-            return confirm('Are you sure you want to delete this appointment?');
-        }
-    </script>
+                            <form action="verify_appointment.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                <input type="hidden" name="action" value="verified">
+                                <button type="submit" class="status-btn verify-btn">Verify</button>
+                            </form>
+                        </td>
+                        <td><?php echo htmlspecialchars($row['status']); ?></td>
+                    </tr>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="9">No appointments found</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Confirmation function for delete action
+    function confirmDelete() {
+        return confirm('Are you sure you want to delete this appointment?');
+    }
+</script>
+
 
 
     <div class="container">
@@ -321,7 +319,7 @@ $resultComments = $conn->query($sqlComments);
 <script>
     function confirmDelete() {
         return confirm('Are you sure you want to delete this appointment?');
-    }     
+    }
 </script>
 
 

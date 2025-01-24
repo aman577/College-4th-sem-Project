@@ -1,27 +1,26 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = $_POST['id'];
+require_once 'db.php';
 
-    // Database connection
-    $conn = new mysqli('localhost', 'root', '', 'project');
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+    $id = intval($_POST['id']);
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    // Query to delete the appointment
+    $sql = "DELETE FROM appointments WHERE id = ?";
+
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("i", $id);
+
+        // Execute the query and check success
+        if ($stmt->execute()) {
+            // After successful deletion, redirect with success message
+            header("Location: manage_appointments.php?message=Appointment deleted successfully");
+            exit();
+        } else {
+            echo "Error deleting record: " . $conn->error;
+        }
+        $stmt->close();
     }
-
-    // Update the status of the appointment instead of deleting it
-    $sql = "UPDATE appointments SET status = 'Deleted' WHERE id = $id";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Appointment marked as deleted successfully.";
-    } else {
-        echo "Error updating appointment: " . $conn->error;
-    }
-
-    $conn->close();
-
-    // Redirect back to admin panel
-    header("Location: admin_panel.php");
-    exit();
 }
+
+$conn->close();
 ?>
