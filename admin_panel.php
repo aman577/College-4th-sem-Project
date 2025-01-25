@@ -1,12 +1,4 @@
 <?php
-// Start session and check if admin is logged in
-session_start();
-
-if (!isset($_SESSION['admin'])) {
-    header("Location: mainlogin.php");
-    exit();
-}
-
 // Database connection
 $conn = new mysqli('localhost', 'root', '', 'project');
 
