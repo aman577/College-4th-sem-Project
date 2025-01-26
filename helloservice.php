@@ -159,6 +159,17 @@
       #book-button:hover {
         background-color: #6d4c71;
       }
+      footer {
+      background-color: #4c3a51;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 50px;
+    }
+
+    footer p {
+      margin: 0;
+    }
     </style>
   </head>
   <body>
@@ -206,9 +217,13 @@
           <p id="service-name">Choose a category to view details</p>
           <p id="service-description"></p>
           <p id="service-price"></p>
-          <button id="book-button" onclick="window.location.href='appointment.htm';">Book Appointment</button>
+          <button id="book-button" onclick="window.location.href='mainlogin.php';" >Book Appointment</button>
         </div>
       </div>
     </section>
+
+    <footer>
+    <p>&copy; XYZ's. All Rights Reserved</p>
+  </footer>
   </body>
 </html>

@@ -203,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <header>
         <nav>
             <li><a href="hellomain.htm">HOME</a></li>
-            <li><a href="menu.htm">MENU</a></li>
+            <li><a href="menu.php">MENU</a></li>
             <li><a href="Services.htm">OUR SERVICES</a></li>
             <li><a href="about.htm">ABOUT US</a></li>
             <li><a href="contact.htm">CONTACT US</a></li>
