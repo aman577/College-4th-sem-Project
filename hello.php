@@ -1132,7 +1132,7 @@
 </div>
 
 <div class="page6btn">
-    <button id="book-button" onclick="window.location.href='appointment.htm';">BOOK AN APPOINTMENT</button>
+    <button id="book-button" onclick="window.location.href='appointment.php';">BOOK AN APPOINTMENT</button>
 </div>
 
 
