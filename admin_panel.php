@@ -304,7 +304,7 @@ $resultComments = $conn->query($sqlComments);
     </div>
 
     <footer>
-        &copy; <?php echo date("Y"); ?> Admin Panel, Nirmala's Beauty Parlor. All rights reserved.
+        &copy; <?php echo date("Y"); ?> Admin Panel, XYZ's Beauty Parlor. All rights reserved.
     </footer>
 </body>
 

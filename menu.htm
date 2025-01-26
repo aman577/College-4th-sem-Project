@@ -232,7 +232,7 @@
   </main>
 
   <footer>
-    <p>&copy; Nirmala's. All Rights Reserved</p>
+    <p>&copy; XYZ's. All Rights Reserved</p>
   </footer>
 
   <script>

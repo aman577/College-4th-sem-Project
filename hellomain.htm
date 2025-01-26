@@ -918,6 +918,332 @@
         color: black;
         transition: 0.7s;
     }
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+    .page-6 {
+        height: auto;
+        padding: 20px;
+        background-attachment: scroll;
+    }
+
+    .page6p1, .page6p2, .page6p3, .page6btn {
+        font-size: 16px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .page-6 .page6p2 p .span1 {
+        font-size: 3rem;
+    }
+
+    .page-6 .page6p2 p .span2 {
+        font-size: 4rem;
+    }
+
+    .page-6 .page6p3 {
+        font-size: 2.5rem;
+    }
+
+    .page6btn button {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+
+    .main_photo {
+        height: 500px;
+        background-position: center;
+    }
+
+    .main_photo .text1, .text2 {
+        font-size: 3rem;
+    }
+
+    .main_photo .fade_text {
+        font-size: 8rem;
+    }
+
+    .btn a {
+        padding: 15px 0;
+        font-size: 0.75rem;
+    }
+
+    .click {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .row {
+        height: 100px;
+        width: 100px;
+    }
+
+    .row p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-6 {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .page-6 .page6p2 p .span1,
+    .page-6 .page6p2 p .span2 {
+        font-size: 2.5rem;
+    }
+
+    .page-6 .page6p3 {
+        font-size: 2rem;
+    }
+
+    .page6btn button {
+        padding: 8px 15px;
+        font-size: 0.75rem;
+    }
+
+    nav {
+        grid-template-columns: repeat(3, auto);
+        padding: 10px 0;
+    }
+
+    .main_photo {
+        height: 400px;
+    }
+
+    .main_photo .text1, .text2 {
+        font-size: 2rem;
+    }
+
+    .main_photo .fade_text {
+        font-size: 6rem;
+    }
+
+    .click {
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .row {
+        height: 80px;
+        width: 80px;
+    }
+
+    .row p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        grid-template-columns: repeat(2, auto);
+        padding: 5px 0;
+    }
+
+    .login {
+        right: 50px;
+    }
+
+    .page-6 .page6p2 p .span1,
+    .page-6 .page6p2 p .span2 {
+        font-size: 1.5rem;
+    }
+
+    .page-6 .page6p3 {
+        font-size: 1.5rem;
+    }
+
+    .page6btn button {
+        padding: 5px 10px;
+        font-size: 0.6rem;
+    }
+
+    .main_photo {
+        height: 300px;
+    }
+
+    .main_photo .text1, .text2 {
+        font-size: 1.5rem;
+    }
+
+    .main_photo .fade_text {
+        font-size: 4rem;
+    }
+
+    .btn a {
+        width: 200px;
+        padding: 10px 0;
+        font-size: 0.7rem;
+    }
+
+    .click {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .row {
+        height: 60px;
+        width: 60px;
+    }
+
+    .row p {
+        font-size: 12px;
+    }
+
+    .page-5 .mainsection {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .page-5 .mainsection .section1,
+    .page-5 .mainsection .section2 {
+        width: 100%;
+        padding: 10px;
+    }
+    /* Add this at the end of your CSS file */
+@media only screen and (max-width: 300px) {
+    /* General styles for all sections */
+    body {
+        font-size: 12px;
+        overflow-x: hidden;
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+    
+    nav {
+        grid-template-columns: repeat(2, auto);
+        gap: 10px;
+    }
+    
+    nav li {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    
+    nav li a {
+        font-size: 0.7rem;
+        padding: 8px 8px;
+    }
+    
+    .login {
+        position: relative;
+        right: 0;
+        top: 10px;
+        padding: 5px;
+    }
+    
+    .login li a {
+        font-size: 0.7rem;
+        padding: 10px 15px;
+    }
+    
+    /* Main photo */
+    .main_photo {
+        height: 400px;
+        background-size: cover;
+    }
+    
+    .main_photo .text1,
+    .text2 {
+        font-size: 2rem;
+    }
+    
+    .main_photo .fade_text {
+        font-size: 4rem;
+    }
+    
+    .main_photo .btn a {
+        width: 200px;
+        font-size: 0.7rem;
+        padding: 10px 0;
+    }
+    
+    /* Page 2 */
+    .page2 .para1 p {
+        font-size: 0.8rem;
+    }
+    
+    .para2p1 {
+        font-size: 3rem;
+    }
+    
+    .para2p2 {
+        font-size: 2rem;
+    }
+    
+    .para3p3 {
+        font-size: 0.7rem;
+    }
+    
+    .click {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .row {
+        height: 100px;
+        width: 100px;
+    }
+    
+    .row p {
+        font-size: 0.6rem;
+    }
+    
+    /* Page 6 */
+    .page-6 {
+        height: 300px;
+        flex-direction: column;
+    }
+    
+    .page-6 .page6p1,
+    .page-6 .page6p2,
+    .page-6 .page6p3 {
+        font-size: 0.8rem;
+    }
+    
+    .page6btn button {
+        padding: 10px 20px;
+        font-size: 0.6rem;
+    }
+    
+    /* Page 7 */
+    .page-7 .page7-main .section1 .page7header p {
+        font-size: 0.6rem;
+    }
+    
+    .page-7 .page7-main .section1 .h2-1st {
+        font-size: 2rem;
+    }
+    
+    .page-7 .page7-main .section1 .secondh2 {
+        font-size: 1.5rem;
+    }
+    
+    .page-7 .page7-main .container {
+        flex-direction: column;
+    }
+    
+    .page-7 .page7-main .container .section2 .img1,
+    .page-7 .page7-main .container .section3 .img2,
+    .page-7 .page7-main .container .section4 .img3 {
+        width: 100%;
+    }
+    
+    /* Footer */
+    footer {
+        font-size: 0.7rem;
+        padding: 10px;
+    }
+}
+
+}
+
 </style>
 
 
@@ -932,7 +1258,7 @@
                 <li><a href="./user_profile.php">YOUR PROFILE</a></li>
             </div>
             <!-- <div class="logo">
-           <span> NIRMALA'S</span> 
+           <span> XYZ'S</span> 
            <span class="beauty"> BEAUTY</span> <span class="salon"> SALON</span>        </div> -->
             <nav class="nav" id="nav">
                 <li><a href="#">HOME</a></li>
@@ -953,7 +1279,7 @@
                     Unleash your beauty
                 </div>
                 <div class="text2">
-                    with Nirmala's Parlor
+                    with XYZ's Parlor
                 </div>
             </div>
         </div>

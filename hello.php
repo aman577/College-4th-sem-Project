@@ -934,7 +934,7 @@
     <div class="main_photo">
         <header>
             <!-- <div class="logo">
-           <span> NIRMALA'S</span> 
+           <span> XYZ'S</span> 
            <span class="beauty"> BEAUTY</span> <span class="salon"> SALON</span>        </div> -->
             <nav class="nav" id="nav">
                 <li><a href="#active">HOME</a></li>
@@ -953,7 +953,7 @@
                     Unleash your beauty
                 </div>
                 <div class="text2">
-                    with Nirmala's Parlor
+                    with XYZ's Parlor
                 </div>
             </div>
         </div>

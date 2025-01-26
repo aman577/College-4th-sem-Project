@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Nirmala's Parlor</title>
+    <title>Contact Us - XYZ's Parlor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;700&family=Dancing+Script&display=swap" rel="stylesheet">
@@ -190,7 +190,7 @@
                 <h2>Our Location</h2>
                 <p><b>Address:</b> New Baneshwor, Eyeplex Ko Gully</p>
                 <p><b>Phone:</b> 9800000000</p>
-                <p><b>Email:</b> Nirmala@gmail.com</p>
+                <p><b>Email:</b> XYZ@gmail.com</p>
 
                 <!-- Google Map -->
                 <div class="map-container">
@@ -202,7 +202,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Nirmala's Parlor. All Rights Reserved.</p>
+        <p>&copy; 2024 XYZ's Parlor. All Rights Reserved.</p>
     </footer>
 </body>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Nirmala's Parlor</title>
+    <title>About Us - XYZ's Parlor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -187,12 +187,12 @@
     </header>
     <div class="container">
         <div class="about-header">
-            <h2>Welcome to Nirmala's Parlor</h2>
+            <h2>Welcome to XYZ's Parlor</h2>
         </div>
 
         <div class="about-content">
             <p>
-                At Nirmala's Parlor, we believe in making every client feel beautiful and confident. Our team of expert
+                At XYZ's Parlor, we believe in making every client feel beautiful and confident. Our team of expert
                 stylists specializes in offering a wide range of services, including facials, make-up, waxing, and
                 more, using only the highest quality, organic products.
             </p>
@@ -207,7 +207,7 @@
             <div class="team-members">
                 <div class="team-member">
                     <img src="./IMAGES/team_member_1.jpg" alt="Team Member 1">
-                    <h3>Nirmala</h3>
+                    <h3>XYZ</h3>
                     <p>Founder & Lead Stylist</p>
                 </div>
                 <div class="team-member">
@@ -226,7 +226,7 @@
         <div class="about-content">
             <h2>Our Mission</h2>
             <p>
-                At Nirmala's Parlor, we aim to help you look and feel your best. Whether you are coming in for a simple
+                At XYZ's Parlor, we aim to help you look and feel your best. Whether you are coming in for a simple
                 facial or a full makeover, we ensure that you leave our salon feeling pampered and refreshed.
             </p>
             <p>
@@ -243,12 +243,12 @@
             </p>
             <p><b>Address:</b> New Baneshwor, Eyeplex Ko Gully</p>
             <p><b>Phone:</b> 9800000000</p>
-            <p><b>Email:</b> Nirmala@gmail.com</p>
+            <p><b>Email:</b> XYZ@gmail.com</p>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 Nirmala's Parlor. All Rights Reserved.</p>
+        <p>&copy; 2024 XYZ's Parlor. All Rights Reserved.</p>
     </footer>
 </body>
 
