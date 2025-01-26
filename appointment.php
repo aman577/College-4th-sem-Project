@@ -36,30 +36,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $date = $_POST['date'];
     $time = $_POST['time'];
 
-    // Check if the selected time slot is already booked
-    $sql = "SELECT * FROM appointments WHERE date = ? AND time = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $date, $time);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // Define the appointment limit per day
+    $appointment_limit = 2;
 
-    if ($result->num_rows > 0) {
-        echo "<script>alert('Time slot is already booked. Please choose another time.');</script>";
+    // Step 1: Check how many appointments are already booked for the selected date
+    $sql = "SELECT COUNT(*) AS appointment_count FROM appointments WHERE date = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $date);
+    $stmt->execute();
+    $stmt->bind_result($appointment_count);
+    $stmt->fetch();
+    $stmt->close();
+
+    // Step 2: Check if the limit of appointments per day is reached
+    if ($appointment_count >= $appointment_limit) {
+        echo "<script>alert('Sorry, the appointment limit for this day has been reached. Please choose another date.');</script>";
     } else {
-        // Insert the appointment into the database
-        $sql = "INSERT INTO appointments (name, email, phone, service, date, time) VALUES (?, ?, ?, ?, ?, ?)";
+        // Step 3: Check if the selected time slot is already booked
+        $sql = "SELECT * FROM appointments WHERE date = ? AND time = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssss", $name, $email, $phone, $service, $date, $time);
-        
-        if ($stmt->execute()) {
-            echo "<script>alert('Appointment booked successfully!');</script>";
+        $stmt->bind_param("ss", $date, $time);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            echo "<script>alert('Time slot is already booked. Please choose another time.');</script>";
         } else {
-            echo "Error: " . $stmt->error;
+            // Step 4: Insert the new appointment into the database
+            $sql = "INSERT INTO appointments (name, email, phone, service, date, time) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssssss", $name, $email, $phone, $service, $date, $time);
+            
+            if ($stmt->execute()) {
+                echo "<script>alert('Appointment booked successfully!');</script>";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
         }
     }
 }
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
