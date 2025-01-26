@@ -206,34 +206,36 @@ while ($appointment = $appointments_result->fetch_assoc()) {
     </header>
 
     <div class="profile-container">
-    <h1>Welcome, <?php echo htmlspecialchars($user['first_name']); ?></h1>
-    <p>Your Email: <span id="email-display"><?php echo htmlspecialchars($user['email']); ?></span></p>
-    <p>Your Phone: <span id="phone-display"><?php echo isset($user['phone']) ? htmlspecialchars($user['phone']) : 'N/A'; ?></span></p>
+        <h1>Welcome, <?php echo htmlspecialchars($user['first_name']); ?></h1>
+        <p>Your Email: <span id="email-display"><?php echo htmlspecialchars($user['email']); ?></span></p>
+        <p>Your Phone: <span id="phone-display"><?php echo isset($user['phone']) ? htmlspecialchars($user['phone']) : 'N/A'; ?></span></p>
 
-    <!-- Display Appointment Details -->
-    <?php if (!empty($appointments)): ?>
-        <p>Your Appointments:</p>
-        <ul>
+        <!-- Display Appointment Details in separate sections -->
+        <?php if (!empty($appointments)): ?>
+            <h3>Your Appointments:</h3>
+            <?php $appointment_count = 1; ?>
             <?php foreach ($appointments as $appointment): ?>
+                <div class="appointment-section">
+                    <h4>Appointment <?php echo $appointment_count; ?></h4>
                     <strong>Service:</strong> <?php echo htmlspecialchars($appointment['service']); ?><br>
                     <strong>Date:</strong> <?php echo htmlspecialchars($appointment['date']); ?><br>
                     <strong>Time:</strong> <?php echo htmlspecialchars($appointment['time']); ?><br>
                     <strong>Status:</strong> <?php echo htmlspecialchars($appointment['status']); ?><br>
+                    <hr>
+                </div>
+                <?php $appointment_count++; ?>
             <?php endforeach; ?>
-        </ul>
-    <?php else: ?>
-        <p>You don't have any appointments booked.</p>
-    <?php endif; ?>
-    
-    <button id="edit-btn">Edit</button>
-</div>
-
+        <?php else: ?>
+            <p>You don't have any appointments booked.</p>
+        <?php endif; ?>
+        
+        <button id="edit-btn">Edit</button>
+    </div>
 
     <!-- Modal -->
     <div class="modal" id="modal">
         <div class="modal-content">
             <h2>Edit Profile</h2>
-
             <label for="email">Edit Email:</label>
             <input type="text" id="email" value="<?php echo htmlspecialchars($user['email']); ?>">
             <span id="email-error" class="error">Please enter a valid email address.</span>

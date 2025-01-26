@@ -430,7 +430,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         };
 
         const checkout = new KhaltiCheckout(config);
-        checkout.show({ amount: selectedPlanAmount * 100 }); // Convert to paisa (e.g., 1000 -> 100000 paisa)
+        checkout.show({ amount: selectedPlanAmount * 100 }); 
     });
 </script>
 
