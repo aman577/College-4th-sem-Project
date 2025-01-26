@@ -32,114 +32,136 @@ $resultComments = $conn->query($sqlComments);
     <title>Admin Panel - Management</title>
     <link rel="stylesheet" href="services.css">
     <style>
-        /* General styles for body and sidebar */
+        /* General Styling */
         body {
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            transition: margin-left 0.3s;
-        }
-
-        /* Sidebar styling */
-        .sidebar {
-            height: 100%;
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            background-color: #4CAF50;
-            color: white;
-            padding-top: 20px;
-            transition: 0.3s;
-        }
-
-        .sidebar a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 1.2em;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidebar a:hover {
-            background-color: #45a049;
-        }
-
-        /* Hamburger icon */
-        .hamburger {
-            display: block;
-            position: fixed;
-            border: 2px solid green;
-            border-radius: 5px;
-            padding-left: 10px;
-            padding-right: 10px;
-            top: 8px;
-            left: 20px;
-            font-size: 30px;
-            cursor: pointer;
-            z-index: 1;
-            color: rgb(86, 90, 86);
-        }
-
-        /* Sidebar open */
-        .sidebar.open {
-            left: 0;
-        }
-
-        /* Page content */
-        .content {
-            margin-left: 0;
+            background-color: #f4f7fc;
+            color: #333;
+            transition: margin-left 0.3s ease;
         }
 
         header {
-            background-color: #4CAF50;
+            background-color: #34495e;
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
+            font-size: 22px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         footer {
             text-align: center;
-            padding: 10px;
+            padding: 15px;
             background-color: #f4f4f9;
-            color: #666;
-            border-top: 1px solid #ddd;
+            color: #555;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -260px;
+            width: 260px;
+            height: 100%;
+            background-color: #2c3e50;
+            color: white;
+            z-index: 1000;
+            transition: left 0.4s ease;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            padding-top: 20px;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #16a085;
+            border-left: 3px solid #1abc9c;
+        }
+
+        /* Hamburger Menu Styling */
+        .hamburger {
+            position: fixed;
+            top: 15px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .hamburger div {
+            background-color: #34495e;
+            height: 4px;
+            margin: 5px 0;
+            transition: 0.4s ease;
+        }
+
+        .hamburger.open div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.open div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open div:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Main Content Styling */
+        .content {
+            margin-left: 0;
+            padding: 0 50px;
+            transition: margin-left 0.4s ease;
+        }
+
+        .sidebar.open+.content {
+            margin-left: 260px;
         }
 
         h2 {
+            margin: 30px 0;
+            font-size: 24px;
+            font-weight: 600;
             text-align: center;
-            margin-top: 30px;
-            color: #4CAF50;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            background-color: white;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         table th,
         table td {
-            border: 1px solid #ddd;
-            padding: 12px;
+            padding: 15px;
             text-align: center;
+            border: 1px solid #ddd;
+            font-size: 14px;
         }
 
         table th {
-            background-color: #4CAF50;
+            background-color: #16a085;
             color: white;
-            font-weight: bold;
         }
 
         table tr:nth-child(even) {
@@ -151,9 +173,10 @@ $resultComments = $conn->query($sqlComments);
         }
 
         button {
-            padding: 8px 15px;
-            background-color: #f44336;
+            padding: 10px 15px;
+            font-size: 14px;
             color: white;
+            background-color: #e74c3c;
             border: none;
             cursor: pointer;
             border-radius: 5px;
@@ -161,61 +184,58 @@ $resultComments = $conn->query($sqlComments);
         }
 
         button:hover {
-            background-color: #d32f2f;
+            background-color: #c0392b;
         }
 
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px 0;
-            background-color: #f4f4f9;
-            color: #666;
-            border-top: 1px solid #ddd;
+        button:active {
+            background-color: #e74c3c;
         }
 
-        /* Responsive Styles */
-        @media screen and (max-width: 768px) {
+        form {
+            margin-bottom: 30px;
+        }
 
-            /* Sidebar */
+        form input[type="text"],
+        form input[type="number"],
+        form input[type="file"],
+        form select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="number"]:focus,
+        form input[type="file"]:focus,
+        form select:focus {
+            border-color: #16a085;
+            outline: none;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
             .sidebar {
                 width: 200px;
             }
 
-            .sidebar.open {
-                left: 0;
-            }
-
             .hamburger {
-                display: block;
-                position: absolute;
-                top: 8px;
-                left: 20px;
-                font-size: 25px;
-                color: white;
+                left: 15px;
             }
 
-            /* Content area */
-            .content {
-                margin-left: 0;
-                padding: 20px;
-            }
-
-            /* Tables */
             table th,
             table td {
-                padding: 8px;
-                font-size: 0.9em;
-            }
-
-            /* Make header and footer font smaller on mobile */
-            header,
-            footer {
-                font-size: 14px;
+                font-size: 12px;
+                padding: 10px;
             }
         }
 
-        @media screen and (max-width: 480px) {
-
+        @media (max-width: 480px) {
             .sidebar {
                 width: 100%;
                 left: -100%;
@@ -229,32 +249,15 @@ $resultComments = $conn->query($sqlComments);
                 margin-left: 0;
             }
 
-            .container {
-                padding: 15px;
-            }
-
             table th,
             table td {
-                padding: 6px;
-                font-size: 0.85em;
+                font-size: 10px;
+                padding: 8px;
             }
 
             button {
-                padding: 10px 18px;
-            }
-        }
-
-        @media screen and (max-width: 320px) {
-
-            .sidebar a {
-                font-size: 0.9em;
-                padding: 12px 18px;
-            }
-
-            table th,
-            table td {
-                font-size: 0.8em;
-                padding: 6px;
+                padding: 8px 12px;
+                font-size: 12px;
             }
         }
     </style>
@@ -262,6 +265,9 @@ $resultComments = $conn->query($sqlComments);
 
 <body>
 
+    <header>
+        Admin Panel - Management
+    </header>
     <!-- Hamburger Menu Icon -->
     <span class="hamburger" onclick="toggleSidebar()">&#9776;</span>
 
@@ -277,9 +283,6 @@ $resultComments = $conn->query($sqlComments);
 
     <!-- Content Area -->
     <div class="content">
-        <header>
-            Admin Panel - Management
-        </header>
 
         <!-- Manage Appointments Section -->
         <div id="appointments" class="container section">
@@ -332,109 +335,109 @@ $resultComments = $conn->query($sqlComments);
             </table>
         </div>
         <div id="Menu_Page" class="container section" style="display: none;">
-    <h2>Manage Menu</h2>
+            <h2>Manage Menu</h2>
 
-    <!-- Add Menu Item Form -->
-    <form action="add_menu_item.php" method="POST" enctype="multipart/form-data" style="margin-bottom: 30px;">
-        <h3>Add New Menu Item</h3>
-        <input type="text" name="name" placeholder="Menu Item Name" required>
-        <input type="file" name="image" accept="image/*" required>
-        <button type="submit">Add Menu Item</button>
-    </form>
+            <!-- Add Menu Item Form -->
+            <form action="add_menu_item.php" method="POST" enctype="multipart/form-data" style="margin-bottom: 30px;">
+                <h3>Add New Menu Item</h3>
+                <input type="text" name="name" placeholder="Menu Item Name" required>
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit">Add Menu Item</button>
+            </form>
 
-    <!-- Menu Items Table -->
-    <h3>Menu Items</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Menu Item</th>
-                <th>Image</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $sqlMenu = "SELECT * FROM menu_items";
-            $resultMenu = $conn->query($sqlMenu);
+            <!-- Menu Items Table -->
+            <h3>Menu Items</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Menu Item</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sqlMenu = "SELECT * FROM menu_items";
+                    $resultMenu = $conn->query($sqlMenu);
 
-            if ($resultMenu->num_rows > 0) {
-                while ($row = $resultMenu->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                    echo "<td><img src='" . htmlspecialchars($row['image']) . "' alt='Menu Image' style='width: 100px;'></td>";
-                    echo "<td>
+                    if ($resultMenu->num_rows > 0) {
+                        while ($row = $resultMenu->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                            echo "<td><img src='" . htmlspecialchars($row['image']) . "' alt='Menu Image' style='width: 100px;'></td>";
+                            echo "<td>
                         <a href='edit_menu_item.php?id=" . $row['id'] . "'>Edit</a> | 
                         <a href='delete_menu_item.php?id=" . $row['id'] . "' onclick='return confirmDelete();'>Delete</a>
                     </td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='4'>No menu items found</td></tr>";
-            }
-            ?>
-        </tbody>
-    </table>
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>No menu items found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
 
-    <hr>
+            <hr>
 
-    <!-- Add Submenu Item Form -->
-    <form action="add_submenu_item.php" method="POST" style="margin-bottom: 30px;">
-        <h3>Add New Submenu Item</h3>
-        <select name="category_id" required>
-            <option value="" disabled selected>Select a Menu Item</option>
-            <?php
-            $sqlMenuCategories = "SELECT id, name FROM menu_items";
-            $resultMenuCategories = $conn->query($sqlMenuCategories);
-            if ($resultMenuCategories->num_rows > 0) {
-                while ($category = $resultMenuCategories->fetch_assoc()) {
-                    echo "<option value='" . htmlspecialchars($category['id']) . "'>" . htmlspecialchars($category['name']) . "</option>";
-                }
-            }
-            ?>
-        </select>
-        <input type="text" name="name" placeholder="Submenu Item Name" required>
-        <input type="number" step="0.01" name="price" placeholder="Price" required>
-        <button type="submit">Add Submenu Item</button>
-    </form>
+            <!-- Add Submenu Item Form -->
+            <form action="add_submenu_item.php" method="POST" style="margin-bottom: 30px;">
+                <h3>Add New Submenu Item</h3>
+                <select name="category_id" required>
+                    <option value="" disabled selected>Select a Menu Item</option>
+                    <?php
+                    $sqlMenuCategories = "SELECT id, name FROM menu_items";
+                    $resultMenuCategories = $conn->query($sqlMenuCategories);
+                    if ($resultMenuCategories->num_rows > 0) {
+                        while ($category = $resultMenuCategories->fetch_assoc()) {
+                            echo "<option value='" . htmlspecialchars($category['id']) . "'>" . htmlspecialchars($category['name']) . "</option>";
+                        }
+                    }
+                    ?>
+                </select>
+                <input type="text" name="name" placeholder="Submenu Item Name" required>
+                <input type="number" step="0.01" name="price" placeholder="Price" required>
+                <button type="submit">Add Submenu Item</button>
+            </form>
 
-    <!-- Submenu Items Table -->
-    <h3>Submenu Items</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th>Submenu Item</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $sqlSubmenuItems = "SELECT submenu_items.*, menu_items.name AS category_name 
+            <!-- Submenu Items Table -->
+            <h3>Submenu Items</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Submenu Item</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sqlSubmenuItems = "SELECT submenu_items.*, menu_items.name AS category_name 
                                 FROM submenu_items
                                 JOIN menu_items ON submenu_items.category_id = menu_items.id";
-            $resultSubmenuItems = $conn->query($sqlSubmenuItems);
+                    $resultSubmenuItems = $conn->query($sqlSubmenuItems);
 
-            if ($resultSubmenuItems->num_rows > 0) {
-                while ($submenu = $resultSubmenuItems->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($submenu['category_name']) . "</td>";
-                    echo "<td>" . htmlspecialchars($submenu['name']) . "</td>";
-                    echo "<td>" . htmlspecialchars($submenu['price']) . "</td>";
-                    echo "<td>
+                    if ($resultSubmenuItems->num_rows > 0) {
+                        while ($submenu = $resultSubmenuItems->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($submenu['category_name']) . "</td>";
+                            echo "<td>" . htmlspecialchars($submenu['name']) . "</td>";
+                            echo "<td>" . htmlspecialchars($submenu['price']) . "</td>";
+                            echo "<td>
                         <a href='edit_submenu_item.php?id=" . $submenu['id'] . "'>Edit</a> | 
                         <a href='delete_submenu_item.php?id=" . $submenu['id'] . "' onclick='return confirmDelete();'>Delete</a>
                     </td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='4'>No submenu items found</td></tr>";
-            }
-            ?>
-        </tbody>
-    </table>
-</div>
-   
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>No submenu items found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+
 
         <!-- Manage Memberships Section -->
         <div id="memberships" class="container section" style="display: none;">
