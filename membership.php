@@ -267,7 +267,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container">
     <div class="membership-intro">
         <h2>Become a Member Today!</h2>
-        <p>Join XYZ's Parlor for exclusive benefits and discounts. Select a plan and register below!</p>
+        <p>Join Mero Parlor's Parlor for exclusive benefits and discounts. Select a plan and register below!</p>
     </div>
 
     <!-- Membership Plans -->
@@ -313,7 +313,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <footer>
-    <p>&copy; XYZ's. All Rights Reserved</p>
+    <p>&copy; Mero Parlor's. All Rights Reserved</p>
 </footer>
 
 <script src="https://khalti.com/static/khalti-checkout.js"></script>
@@ -360,17 +360,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     });
 
     // Real-time Validation for Email
-    document.getElementById('email').addEventListener('input', function() {
-        const email = this.value;
-        const emailError = document.getElementById('emailError');
-        const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; // Standard email format
+    document.getElementById('email').addEventListener('input', function () {
+    const email = this.value;
+    const emailError = document.getElementById('emailError');
+    
+    const regex = /^(?![0-9])[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-        if (!regex.test(email)) {
-            emailError.textContent = "Please enter a valid email address.";
-        } else {
-            emailError.textContent = "";
-        }
-    });
+    if (!regex.test(email)) {
+        emailError.textContent = "Please enter a valid email address";
+    } else {
+        emailError.textContent = "";
+    }
+});
+
+
 
     // Khalti Payment Integration
     const payButton = document.getElementById('payButton');

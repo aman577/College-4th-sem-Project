@@ -20,14 +20,13 @@ $name = $email = $phone = "";
 
 // Check if user is logged in and session data is available
 if (isset($_SESSION['user'])) {
-    // Safely retrieve the user data from the session
-    $name = isset($_SESSION['user']['name']) ? $_SESSION['user']['name'] : '';
-    $email = isset($_SESSION['user']['email']) ? $_SESSION['user']['email'] : '';
-    $phone = isset($_SESSION['user']['phone']) ? $_SESSION['user']['phone'] : '';
+    $name = $_SESSION['user']['name'] ?? '';
+    $email = $_SESSION['user']['email'] ?? '';
+    $phone = $_SESSION['user']['phone'] ?? '';
 }
 
 // Handle form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get form data
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -35,11 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $service = $_POST['service'];
     $date = $_POST['date'];
     $time = $_POST['time'];
+    $receiptPath = null;
 
     // Define the appointment limit per day
     $appointment_limit = 2;
 
-    // Step 1: Check how many appointments are already booked for the selected date
+    // Step 1: Check the number of appointments already booked for the selected date
     $sql = "SELECT COUNT(*) AS appointment_count FROM appointments WHERE date = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $date);
@@ -48,11 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->fetch();
     $stmt->close();
 
-    // Step 2: Check if the limit of appointments per day is reached
+    // Step 2: Check if the appointment limit is reached
     if ($appointment_count >= $appointment_limit) {
         echo "<script>alert('Sorry, the appointment limit for this day has been reached. Please choose another date.');</script>";
     } else {
-        // Step 3: Check if the selected time slot is already booked
+        // Step 3: Check if the time slot is already booked
         $sql = "SELECT * FROM appointments WHERE date = ? AND time = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $date, $time);
@@ -62,23 +62,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($result->num_rows > 0) {
             echo "<script>alert('Time slot is already booked. Please choose another time.');</script>";
         } else {
-            // Step 4: Insert the new appointment into the database
-            $sql = "INSERT INTO appointments (name, email, phone, service, date, time) VALUES (?, ?, ?, ?, ?, ?)";
+            // Step 4: Handle receipt upload if a file is provided
+            if (isset($_FILES['receipt']) && $_FILES['receipt']['error'] === UPLOAD_ERR_OK) {
+                $uploadDir = 'uploads/receipts/';
+                $receiptName = uniqid() . '-' . basename($_FILES['receipt']['name']);
+                $receiptTmpName = $_FILES['receipt']['tmp_name'];
+                $receiptPath = $uploadDir . $receiptName;
+
+                // Create the upload directory if it doesn't exist
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0777, true);
+                }
+
+                // Validate receipt file type and size
+                $fileType = mime_content_type($receiptTmpName);
+                $allowedTypes = ['image/jpeg', 'image/png'];
+                $maxSize = 2 * 1024 * 1024; // 2MB
+
+                if (in_array($fileType, $allowedTypes) && $_FILES['receipt']['size'] <= $maxSize) {
+                    if (!move_uploaded_file($receiptTmpName, $receiptPath)) {
+                        echo "<script>alert('Failed to upload receipt. Please try again.');</script>";
+                        $receiptPath = null; // Reset to null if upload fails
+                    }
+                } else {
+                    echo "<script>alert('Invalid receipt file. Only JPG and PNG files under 2MB are allowed.');</script>";
+                    $receiptPath = null; // Reset to null if invalid file
+                }
+            }
+
+            // Step 5: Insert the new appointment into the database
+            $sql = "INSERT INTO appointments (name, email, phone, service, date, time, receipt_path) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssssss", $name, $email, $phone, $service, $date, $time);
-            
+            $stmt->bind_param("sssssss", $name, $email, $phone, $service, $date, $time, $receiptPath);
+
             if ($stmt->execute()) {
                 echo "<script>alert('Appointment booked successfully!');</script>";
             } else {
-                echo "Error: " . $stmt->error;
+                error_log("Database Error: " . $stmt->error);
+                echo "<script>alert('An error occurred while booking your appointment. Please try again.');</script>";
             }
+            $stmt->close();
         }
     }
 }
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -96,13 +129,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             background-color: #f8f5f2;
             color: #333;
         }
+
         .error-message {
-        color: red;
-        font-size: 0.9rem;
-        margin-top: -10px;
-        margin-bottom: 10px;
-        display: block;
-    }
+            color: red;
+            font-size: 0.9rem;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            display: block;
+        }
 
         header {
             background-color: #4c3a51;
@@ -185,20 +219,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .appointment-form button:hover {
             background-color: #6d4c71;
         }
-        
-    footer {
-      background-color: #4c3a51;
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-      margin-top: 50px;
-    }
 
-    footer p {
-      margin: 0;
-    }
-        </style>
+        footer {
+            background-color: #4c3a51;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -210,10 +245,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </nav>
     </header>
 
-   <!-- Appointment Booking Section -->
-   <div class="appointment-section" id="appointment">
+    <!-- Appointment Booking Section -->
+    <div class="appointment-section" id="appointment">
         <h2>Book an Appointment</h2>
-        <form action="appointment.php" method="POST" class="appointment-form" id="appointmentForm">
+        <form action="appointment.php" method="POST" class="appointment-form" id="appointmentForm" enctype="multipart/form-data">
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" placeholder="Enter your full name" value="<?php echo htmlspecialchars($name); ?>" required>
             <span id="nameError" class="error-message"></span>
@@ -244,14 +279,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="time" id="time" name="time" required min="08:00" max="20:00">
             <span id="timeError" class="error-message"></span>
 
+            <label for="receipt">Upload Receipt of Your Payment:</label>
+            <input type="file" id="receipt" name="receipt" accept="image/*">
+            <span id="receiptError" class="error-message"></span>
+            <div style="text-align: center;">
+    <img src="./IMAGES/Screenshot 2025-01-28 000718.jpg" alt="QR Code" style="height:100px; width:100px; display:block; margin: 0 auto;">
+    <p style="margin-top: 5px; font-size: 14px; color: #333;">Scan to Pay</p>
+</div>
+
             <button type="submit" id="submitButton">Submit</button>
         </form>
     </div>
-    
-  <footer>
-    <p>&copy; XYZ's. All Rights Reserved</p>
-  </footer>
 
+    <footer>
+        <p>&copy; Mero Parlor's. All Rights Reserved</p>
+    </footer>
     <script>
         let selectedPlanAmount = 0;
 
@@ -266,7 +308,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             const nameField = document.getElementById("name");
             const nameError = document.getElementById("nameError");
             const name = nameField.value.trim();
-    
+
             if (!/^[A-Za-z\s]+$/.test(name)) {
                 nameError.textContent = "Name can only contain letters and spaces.";
                 nameField.style.borderColor = "red";
@@ -280,8 +322,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             const emailField = document.getElementById("email");
             const emailError = document.getElementById("emailError");
             const email = emailField.value.trim();
-    
-            if (!/^\S+@\S+\.\S+$/.test(email)) {
+
+            // Simple email validation regex
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
                 emailError.textContent = "Please enter a valid email address.";
                 emailField.style.borderColor = "red";
             } else {
@@ -294,7 +338,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             const phoneField = document.getElementById("phone");
             const phoneError = document.getElementById("phoneError");
             const phone = phoneField.value.trim();
-    
+
             if (!/^(98|97|96)\d{8}$/.test(phone)) {
                 phoneError.textContent = "Enter 10 digit numbers (starts with 98, 97, or 96).";
                 phoneField.style.borderColor = "red";
@@ -309,7 +353,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             const dateError = document.getElementById("dateError");
             const date = dateField.value;
             const today = new Date().toISOString().split("T")[0];
-    
+
             if (date < today) {
                 dateError.textContent = "Date cannot be in the past.";
                 dateField.style.borderColor = "red";
@@ -328,9 +372,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             const selectedDate = document.getElementById("date").value;
             const selectedTime = new Date(selectedDate + 'T' + time);
 
+            // Check if the appointment is at least 2 hours in advance
+            const twoHoursLater = new Date(now.getTime() + 2 * 60 * 60 * 1000); // 2 hours later
+
             if (selectedDate === new Date().toISOString().split('T')[0]) {
-                if (selectedTime < now) {
-                    timeError.textContent = "Time cannot be in the past.";
+                if (selectedTime < twoHoursLater) {
+                    timeError.textContent = "Appointment must be at least 2 hours.";
                     timeField.style.borderColor = "red";
                 } else {
                     timeError.textContent = "";
@@ -377,6 +424,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         });
     </script>
+
+
 </body>
 
 

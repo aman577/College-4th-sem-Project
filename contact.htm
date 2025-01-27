@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - XYZ's Parlor</title>
+    <title>Contact Us - Mero Parlor's Parlor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;700&family=Dancing+Script&display=swap" rel="stylesheet">
@@ -213,7 +213,7 @@
                 <h2>Our Location</h2>
                 <p><b>Address:</b> <a href="https://www.google.com/maps/place/Devkota+Sadak,+Kathmandu+44600/@27.6950551,85.3347222,17z/data=!3m1!4b1!4m6!3m5!1s0x39eb1999c4639299:0xc89109abaeb744f3!8m2!3d27.6950551!4d85.3372971!16s%2Fg%2F1tj87vjc?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D">Devkota Sadak, Kathmandu 44600</a></p>
                 <p><b>Phone:</b> 9800000000</p>
-                <p><b>Email:</b> XYZ@gmail.com</p>
+                <p><b>Email:</b> Mero Parlor@gmail.com</p>
     
                 <!-- Google Map -->
                 <div class="map-container">
@@ -224,14 +224,13 @@
     </div>
 
     <footer>
-        <p>&copy; XYZ's. All Rights Reserved</p>
+        <p>&copy; Mero Parlor's. All Rights Reserved</p>
       </footer>
-    
-    <script>
+      <script>
         // Validation patterns
-        const namePattern = /^[A-Za-z\s]+$/;  
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-        const messageMaxLength = 500;  
+        const namePattern = /^[A-Za-z\s]+$/;
+        const emailPattern = /^(?![0-9])([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/; // Updated regex
+        const messageMaxLength = 500;
     
         // Get form elements
         const nameInput = document.getElementById('name');
@@ -300,8 +299,10 @@
     
         // Initialize validation state when the page loads
         validateForm();
-    
     </script>
+    
+    
+    
 </body>
 
 </html>

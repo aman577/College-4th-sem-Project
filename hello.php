@@ -279,6 +279,29 @@
         color: rgb(0, 0, 0);
         /* font-weight: bold; */
     }
+
+/* Media Queries for Adjustments */
+@media (max-width: 1024px) {
+  .main_photo {
+    background-size: contain; /* Fit the image inside the container */
+    height: 80vh; /* Adjust height for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .main_photo {
+    background-size: cover; /* Ensure the image remains as a background */
+    height: 70vh; /* Smaller height for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .main_photo {
+    background-size: cover; 
+    height: 60vh; /* Optimized height for very small devices */
+  }
+}
+
     
     /* 2nd page starts here*/
     .page2 {
@@ -687,6 +710,13 @@
     
     
     /*8th page starts here*/
+
+    .page-8 .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
     
     .page-8 .container .section1 .page8header p {
         display: flex;
@@ -727,6 +757,30 @@
     .page-8 .container{
         padding-bottom: 50px;
     }
+    @media (max-width: 768px) {
+  .h2-page8 {
+    font-size: 1.5rem;
+  }
+  .section2 .img1, 
+  .section2 .img2 {
+    flex: 1 1 100%; /* Stack images on top of each other */
+  }
+  .section2 h5 {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page8header p {
+    font-size: 1rem;
+  }
+  .h2-page8 {
+    font-size: 1.2rem;
+  }
+  .section2 h5 {
+    font-size: 0.8rem;
+  }
+}
     /*8th page ends here*/
     
     
@@ -934,7 +988,7 @@
     <div class="main_photo">
         <header>
             <!-- <div class="logo">
-           <span> XYZ'S</span> 
+           <span> Mero Parlor'S</span> 
            <span class="beauty"> BEAUTY</span> <span class="salon"> SALON</span>        </div> -->
             <nav class="nav" id="nav">
                 <li><a href="#active">HOME</a></li>
@@ -953,7 +1007,7 @@
                     Unleash your beauty
                 </div>
                 <div class="text2">
-                    with XYZ's Parlor
+                    with Mero Parlor
                 </div>
             </div>
         </div>
@@ -1235,7 +1289,7 @@
             </p>
             <p class="p2">
                 phone: 9800000000 <br>
-                XYZ@gmail.com
+                Mero Parlor@gmail.com
             </p>
         </div>
         <div class="section2">
@@ -1259,7 +1313,7 @@
     <!-- yo footer ho -->
     <footer>
         <div class="footerp">
-            <p> &copy; XYZ. All Rights Reserve</p>
+            <p> &copy; Mero Parlor. All Rights Reserve</p>
         </div>
         <!-- <li style="list-style: none; "><a href="./logout.php" style="color: white; text-decoration: none;">LOGOUT</a></li> -->
 

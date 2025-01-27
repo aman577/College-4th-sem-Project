@@ -170,7 +170,7 @@ $resultMenu = $conn->query($sqlMenu);
     </main>
 
     <footer>
-        <p>&copy; XYZ's. All Rights Reserved</p>
+        <p>&copy; Mero Parlor's. All Rights Reserved</p>
     </footer>
 </body>
 

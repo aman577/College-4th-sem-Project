@@ -7,8 +7,9 @@ if ($conn->connect_error) {
 }
 
 // Fetch appointments
-$sqlAppointments = "SELECT id, name, email, phone, service, date, time, status FROM appointments ORDER BY date, time";
+$sqlAppointments = "SELECT id, name, email, phone, service, date, time, status, receipt_path FROM appointments ORDER BY date, time";
 $resultAppointments = $conn->query($sqlAppointments);
+
 
 // Fetch memberships
 $sqlMemberships = "SELECT id, name, email, phone, plan, registration_date FROM memberships ORDER BY registration_date DESC";
@@ -104,6 +105,7 @@ $resultComments = $conn->query($sqlComments);
             height: 30px;
             cursor: pointer;
             z-index: 1100;
+            color: white;
         }
 
         .hamburger div {
@@ -176,7 +178,7 @@ $resultComments = $conn->query($sqlComments);
             padding: 10px 15px;
             font-size: 14px;
             color: white;
-            background-color: #e74c3c;
+            background-color: rgb(5, 150, 0);
             border: none;
             cursor: pointer;
             border-radius: 5px;
@@ -184,11 +186,11 @@ $resultComments = $conn->query($sqlComments);
         }
 
         button:hover {
-            background-color: #c0392b;
+            background-color: rgb(38, 176, 29);
         }
 
         button:active {
-            background-color: #e74c3c;
+            background-color: rgb(25, 165, 9);
         }
 
         form {
@@ -286,54 +288,63 @@ $resultComments = $conn->query($sqlComments);
 
         <!-- Manage Appointments Section -->
         <div id="appointments" class="container section">
-            <h2>Manage Appointments</h2>
-            <table>
-                <thead>
+    <h2>Manage Appointments</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+                <th>Status</th>
+                <th>Receipt</th> <!-- New column for Receipt -->
+            </tr>
+        </thead>
+        <tbody>
+            <?php if ($resultAppointments && $resultAppointments->num_rows > 0): ?>
+                <?php while ($row = $resultAppointments->fetch_assoc()): ?>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Service</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Actions</th>
-                        <th>Status</th>
+                        <td><?php echo htmlspecialchars($row['id']); ?></td>
+                        <td><?php echo htmlspecialchars($row['name']); ?></td>
+                        <td><?php echo htmlspecialchars($row['email']); ?></td>
+                        <td><?php echo htmlspecialchars($row['phone']); ?></td>
+                        <td><?php echo htmlspecialchars($row['service']); ?></td>
+                        <td><?php echo htmlspecialchars($row['date']); ?></td>
+                        <td><?php echo htmlspecialchars($row['time']); ?></td>
+                        <td>
+                            <form action="verify_appointment.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                <input type="hidden" name="action" value="verified">
+                                <button type="submit" class="status-btn verify-btn">Verify</button>
+                            </form>
+                        </td>
+                        <td><?php echo htmlspecialchars($row['status']); ?></td>
+                        <td>
+                            <?php if (!empty($row['receipt_path'])): ?>
+                                <a href="http://localhost/Project/<?php echo htmlspecialchars($row['receipt_path']); ?>" target="_blank">View Receipt</a>
+
+                            <?php else: ?>
+                                No receipt uploaded
+                            <?php endif; ?>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php if ($resultAppointments && $resultAppointments->num_rows > 0): ?>
-                        <?php while ($row = $resultAppointments->fetch_assoc()): ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($row['id']); ?></td>
-                                <td><?php echo htmlspecialchars($row['name']); ?></td>
-                                <td><?php echo htmlspecialchars($row['email']); ?></td>
-                                <td><?php echo htmlspecialchars($row['phone']); ?></td>
-                                <td><?php echo htmlspecialchars($row['service']); ?></td>
-                                <td><?php echo htmlspecialchars($row['date']); ?></td>
-                                <td><?php echo htmlspecialchars($row['time']); ?></td>
-                                <td>
-                                    <form action="delete_appointment.php" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
-                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                        <button type="submit">Delete</button>
-                                    </form>
-                                    <form action="verify_appointment.php" method="POST" style="display:inline;">
-                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-                                        <input type="hidden" name="action" value="verified">
-                                        <button type="submit" class="status-btn verify-btn">Verify</button>
-                                    </form>
-                                </td>
-                                <td><?php echo htmlspecialchars($row['status']); ?></td>
-                            </tr>
-                        <?php endwhile; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="9">No appointments found</td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="10">No appointments found</td> <!-- Update colspan to match the total number of columns -->
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+
+
+
+        <!-- MENU SECTION -->
         <div id="Menu_Page" class="container section" style="display: none;">
             <h2>Manage Menu</h2>
 

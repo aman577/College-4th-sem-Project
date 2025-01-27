@@ -170,7 +170,7 @@ $resultMenu = $conn->query($sqlMenu);
         <nav>
             <li><a href="hellomain.htm">HOME</a></li>
             <li><a href="#active">MENU</a></li>
-            <li><a href="Services.htm">OUR SERVICES</a></li>
+            <li><a href="Services.php">OUR SERVICES</a></li>
             <li><a href="about.htm">ABOUT US</a></li>
             <li><a href="contact.htm">CONTACT US</a></li>
         </nav>
@@ -215,7 +215,7 @@ $resultMenu = $conn->query($sqlMenu);
     </main>
 
     <footer>
-        <p>&copy; XYZ's. All Rights Reserved</p>
+        <p>&copy; Mero Parlor's. All Rights Reserved</p>
     </footer>
 
     <script>

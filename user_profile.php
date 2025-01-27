@@ -198,8 +198,8 @@ while ($appointment = $appointments_result->fetch_assoc()) {
     <header>
         <nav>
             <a href="hellomain.htm">HOME</a>
-            <a href="menu.htm">MENU</a>
-            <a href="Services.htm">OUR SERVICES</a>
+            <a href="menu.php">MENU</a>
+            <a href="Services.php">OUR SERVICES</a>
             <a href="about.htm">ABOUT US</a>
             <a href="contact.htm">CONTACT US</a>
         </nav>
