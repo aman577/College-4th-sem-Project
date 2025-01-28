@@ -1302,8 +1302,6 @@
             <p class="p8">
                 Subscribe our mailing list and be the first to know <br>about special deals!
             </p>
-            <input  type="text" placeholder="Please Leave Us Comment">
-            <button >submit Comment</button>
         </div>
 
     </div>

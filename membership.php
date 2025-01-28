@@ -319,19 +319,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script src="https://khalti.com/static/khalti-checkout.js"></script>
 
 <script>
-    let selectedPlanAmount = 0;
+function selectPlan(planName, amount) {
+    document.getElementById('plan').value = planName;
+    selectedPlanAmount = amount;
 
-    // Function to autofill the plan based on user selection and scroll to registration form
-    function selectPlan(planName, amount) {
-        document.getElementById('plan').value = planName;
-        selectedPlanAmount = amount;
+    // Auto-fill user details if stored in session
+    fetch('get_user_session.php')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('name').value = data.name || '';
+            document.getElementById('email').value = data.email || '';
+            document.getElementById('phone').value = data.phone || '';
+        })
+        .catch(error => console.error('Error fetching session data:', error));
 
-        // Show the registration form
-        document.getElementById('registrationForm').style.display = 'block';
+    // Show the registration form
+    document.getElementById('registrationForm').style.display = 'block';
 
-        // Scroll smoothly to the registration form
+    // Scroll smoothly to the registration form
+    setTimeout(() => {
         document.getElementById('registrationForm').scrollIntoView({ behavior: 'smooth' });
-    }
+    }, 300);
+}
+
 
     // Real-time Validation for Name
     document.getElementById('name').addEventListener('input', function() {
