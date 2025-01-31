@@ -3,20 +3,33 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Check if user is logged in
-if (!isset($_SESSION['user'])) {
-    header("Location: mainlogin.php");  
+// Check if user is logged in and if `user` session is properly structured
+if (!isset($_SESSION['user']) || !is_array($_SESSION['user'])) {
+    header("Location: mainlogin.php");
     exit();
 }
 
 $user = $_SESSION['user'];
-include 'db.php'; 
+
+if (!isset($user['email'])) {
+    echo "User session data is corrupted or missing.";
+    exit();
+}
+
+include 'db.php';
 
 $user_email = $user['email'];
 
+// Validate email format before using it in a query
+if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
+    echo "Invalid email format.";
+    exit();
+}
+
+// Fetch user appointments
 $appointments_query = "SELECT * FROM appointments WHERE email = ?";
 $stmt = $conn->prepare($appointments_query);
-$stmt->bind_param("s", $user_email); 
+$stmt->bind_param("s", $user_email);
 $stmt->execute();
 $appointments_result = $stmt->get_result();
 
@@ -25,7 +38,11 @@ while ($appointment = $appointments_result->fetch_assoc()) {
     $appointments[] = $appointment;
 }
 
+// Close the statement and connection
+$stmt->close();
+$conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

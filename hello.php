@@ -1153,19 +1153,8 @@
             </div>
             <div class="section2  ">
                 <p class="p3-span">
-                    Mon-Wed - <b>10:00AM - 9:00PM</b>
+                    Sat-Sun - <b>08:00AM - 08:00PM</b>
                     <hr class="dotted">
-                </p>
-                <p class="p3-2ndspan">
-                    Thursday - <b>10:00AM - 7:30PM</b>
-                    <hr class="dotted">
-                </p>
-                <p class="page5p">
-                    Friday - <b>10:00AM - 9:00PM</b>
-                    <hr class="dotted">
-                </p>
-                <p class="page5p2">
-                    Sat-Sun - <b>10:00AM - 5:00PM</b>
                 </p>
             </div>
         </div>
